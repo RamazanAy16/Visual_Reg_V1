@@ -7,7 +7,27 @@ const URL2 = process.env.URL2 || URL1;
 
 async function loadPage(page, url) {
   await page.goto(url, { waitUntil: 'load', timeout: 60000 });
-  await page.waitForTimeout(2000);
+
+  // Lazy load elementlerin yüklenmesi için en alta kadar scroll et
+  await page.evaluate(async () => {
+    await new Promise((resolve) => {
+      let totalHeight = 0;
+      const distance = 300;
+      const timer = setInterval(() => {
+        window.scrollBy(0, distance);
+        totalHeight += distance;
+        if (totalHeight >= document.body.scrollHeight) {
+          clearInterval(timer);
+          resolve();
+        }
+      }, 100);
+    });
+  });
+
+  // Yüklenme için bekle, sonra en üste dön
+  await page.waitForTimeout(1000);
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.waitForTimeout(500);
 }
 
 function saveBaseline(snapshotPath, screenshot) {
