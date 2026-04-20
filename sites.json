@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Takvim",
+    "test": "https://www.takvim.com.tr/",
+    "prod": "https://www.takvim.com.tr/"
+  },
+  {
+    "name": "Sabah",
+    "test": "https://www.sabah.com.tr/",
+    "prod": "https://www.sabah.com.tr/"
+  }
+]

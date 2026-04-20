@@ -4,6 +4,7 @@ class TurkishReporter {
   }
 
   onTestEnd(test, result) {
+    const site = test.parent?.title || 'Genel';
     const name = test.title;
     const status = result.status;
     const duration = (result.duration / 1000).toFixed(1);
@@ -27,7 +28,7 @@ class TurkishReporter {
       }
     }
 
-    this.results.push({ name, status, duration, diffInfo });
+    this.results.push({ site, name, status, duration, diffInfo });
   }
 
   onEnd(result) {
@@ -36,21 +37,28 @@ class TurkishReporter {
     const skipped = this.results.filter(r => r.status === 'skipped').length;
     const total = this.results.length;
 
+    // Site isimlerini grupla
+    const sites = [...new Set(this.results.map(r => r.site))];
+
     console.log('\n' + '═'.repeat(60));
     console.log('  UI GORSEL REGRESYON TEST RAPORU');
     console.log('═'.repeat(60));
 
-    for (const r of this.results) {
-      if (r.status === 'passed') {
-        console.log(`  ✓  ${r.name} (${r.duration}s)`);
-        console.log(`       → Gorsel fark yok, ortamlar ayni gorunuyor`);
-      } else if (r.status === 'failed') {
-        console.log(`  ✘  ${r.name} (${r.duration}s)`);
-        console.log(`       → FARK BULUNDU: ${r.diffInfo}`);
-        console.log(`       → Diff gorseli: test-results klasorune bakiniz`);
-      } else if (r.status === 'skipped') {
-        console.log(`  -  ${r.name}`);
-        console.log(`       → Element bulunamadi, gecildi`);
+    for (const site of sites) {
+      const siteResults = this.results.filter(r => r.site === site);
+      console.log(`\n  [ ${site} ]`);
+      for (const r of siteResults) {
+        if (r.status === 'passed') {
+          console.log(`    ✓  ${r.name} (${r.duration}s)`);
+          console.log(`         → Gorsel fark yok, ortamlar ayni gorunuyor`);
+        } else if (r.status === 'failed') {
+          console.log(`    ✘  ${r.name} (${r.duration}s)`);
+          console.log(`         → FARK BULUNDU: ${r.diffInfo}`);
+          console.log(`         → Diff gorseli: test-results klasorune bakiniz`);
+        } else if (r.status === 'skipped') {
+          console.log(`    -  ${r.name}`);
+          console.log(`         → Element bulunamadi, gecildi`);
+        }
       }
     }
 
