@@ -14,6 +14,7 @@ module.exports = defineConfig({
     viewport: { width: 1440, height: 900 },
     headless: true,
   },
+  globalSetup: './global-setup.js',
   reporter: [['list'], ['./reporter.js']],
   projects: [
     { name: 'chromium', use: { browserName: 'chromium' } },
