@@ -1,0 +1,1861 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: visual.spec.js >> Header
+- Location: tests\visual.spec.js:29:1
+
+# Error details
+
+```
+Error: expect(locator).toHaveScreenshot(expected) failed
+
+Locator: locator('header, #header, .header, [role="banner"]').first()
+  Expected an image 1440px by 80px, received 1440px by 95px. 72445 pixels (ratio 0.53 of all image pixels) are different.
+
+  Snapshot: header.png
+
+Call log:
+  - Expect "toHaveScreenshot(header.png)" with timeout 15000ms
+    - verifying given screenshot expectation
+  - waiting for locator('header, #header, .header, [role="banner"]').first()
+    - locator resolved to <header class="advertControlArea">…</header>
+  - taking element screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - attempting scroll into view action
+    - waiting for element to be stable
+  - Expected an image 1440px by 80px, received 1440px by 95px. 72445 pixels (ratio 0.53 of all image pixels) are different.
+  - waiting 100ms before taking screenshot
+  - waiting for locator('header, #header, .header, [role="banner"]').first()
+    - locator resolved to <header class="advertControlArea">…</header>
+  - taking element screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - attempting scroll into view action
+    - waiting for element to be stable
+  - captured a stable screenshot
+  - Expected an image 1440px by 80px, received 1440px by 95px. 72445 pixels (ratio 0.53 of all image pixels) are different.
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "Takvim Haber - Son Dakika Haberler, Güncel Gazete Haberleri" [ref=e5] [cursor=pointer]:
+        - /url: https://www.takvim.com.tr
+        - img "Takvim Haber - Son Dakika Haberler, Güncel Gazete Haberleri" [ref=e7]
+      - generic [ref=e8]:
+        - generic [ref=e9]: Son Dakika
+        - generic [ref=e11]:
+          - link "ZTK’da Konyaspor - Fenerbahçe maçını Ozan Ergün yönetecek" [ref=e12] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/turkiye-kupa/2026/04/20/ztkda-konyaspor-fenerbahce-macini-ozan-ergun-yonetecek
+          - 'link "Cumhurbaşkanlığı Kabinesi toplandı: Gülistan Doku, okul saldırıları ve Terörsüz Türkiye süreci masada" [ref=e13] [cursor=pointer]':
+            - /url: https://www.takvim.com.tr/guncel/2026/04/20/cumhurbaskanligi-kabinesi-toplaniyor-okul-saldirilari-masada
+      - link "CANLI YAYIN" [ref=e14] [cursor=pointer]:
+        - /url: https://www.takvim.com.tr/canli-yayin-izle
+        - img [ref=e15]
+        - generic [ref=e19]: CANLI YAYIN
+      - button "Ara" [ref=e21] [cursor=pointer]:
+        - img [ref=e22]
+      - button "Menü" [ref=e26] [cursor=pointer]:
+        - img [ref=e27]
+    - navigation [ref=e31]:
+      - list [ref=e32]:
+        - listitem [ref=e33]:
+          - link "SON DAKİKA" [ref=e34] [cursor=pointer]:
+            - /url: /son-dakika-haberleri
+        - listitem [ref=e35]:
+          - link "GÜNCEL" [ref=e36] [cursor=pointer]:
+            - /url: /guncel
+        - listitem [ref=e37]:
+          - link "EKONOMİ" [ref=e38] [cursor=pointer]:
+            - /url: /ekonomi
+        - listitem [ref=e39]:
+          - link "SPOR" [ref=e40] [cursor=pointer]:
+            - /url: /spor
+        - listitem [ref=e41]:
+          - link "MAGAZİN" [ref=e42] [cursor=pointer]:
+            - /url: /magazin
+        - listitem [ref=e43]:
+          - link "DÜNYA" [ref=e44] [cursor=pointer]:
+            - /url: /dunya
+        - listitem [ref=e45]:
+          - link "YAŞAM" [ref=e46] [cursor=pointer]:
+            - /url: /yasam
+        - listitem [ref=e47]:
+          - link "YAZARLAR" [ref=e48] [cursor=pointer]:
+            - /url: /yazarlar
+        - listitem [ref=e49]:
+          - link "RESMİ İLANLAR" [ref=e50] [cursor=pointer]:
+            - /url: /resmi-ilan
+        - listitem [ref=e51]:
+          - link "Takvim Tv" [ref=e52] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/video
+        - listitem [ref=e53]:
+          - link "Ziraat Türkiye Kupası Logo" [ref=e54] [cursor=pointer]:
+            - /url: https://www.aspor.com.tr/turkiye-kupasi
+            - img "Ziraat Türkiye Kupası Logo" [ref=e55]
+  - iframe [ref=e61]:
+    - generic [ref=f11e4]:
+      - iframe [ref=f11e5]:
+        
+      - link [ref=f11e6] [cursor=pointer]:
+        - /url: https://adclick.g.doubleclick.net/pcs/click?xai=AKAOjsvMqBBOev_qcQuovJjsQSjaitNlUjAvICKZBle1II1SLNhbk-eEJPXntJ2uNlZcZVWbLoirb-e0qhEypEADeIa6wUbCUUMqxF6c8FH1_Q8rJtMBcA0JE9UPyaZc7D3XKcJ0cxRU7IPb7l3IE65c2gd7_Jhp6Bb9RcSRrcvSnyUJujPlGtBEOiSMhPGB0kjaGCEEQtXtj_4mWFnlWCTSJM0m4UiykUiGouX_rkcYwhzqKMhpd0s3HYX4LD-lAAXdJWgEG5QItmk--Dus-KXv-5gfoaKWIQv-tcyHzevaNgTbz9MFR2iBz0NHqmpGl7jcJ_cvz2Wkg-gL72EIqKlp4I2pTV5xkm6YhqvynpfDq0W7SMBcv8HeIycuveI_tJGc4KZzbbadQTF0hJoR18xGEt2Vnaq5baWWpJj1ETEyEpo&sai=AMfl-YQXyi28ePTWAgMeU-YOqkjIcQ4PFDb1gtF0WSxHbPVQhYolunO3NlYhoTimMW-hdVhADkYvQBNlmEhgHScfLVQH-UVtd9Xu3SfIxX0P8GzIoNEjjCSWMKckap9f9PaIDniA8QaauIb4tZVVMFj0GOy8IRyuVU13ZyF-hMxvo_puyjmIPIjhXroNkCr9uoAvxj095k45OTAavaMDLvDy1Sm3zygEGCUyuAryk-ZcxvDVo-WIa-lJg5a8rZsduvJSmc6A4Qu1zWTPVHvJVMt4MH-VybjCw9JSIe7fs-gCfEk5KRBq-AuKwEBi6LZnWI5jypLKUlUMdp3B_kv6htWKL87NKzuNy65M8Ug&sig=Cg0ArKJSzHOnCWfJ7qG6EAE&fbs_aeid=%5Bgw_fbsaeid%5D&urlfix=1&adurl=https://gdetr.hit.gemius.pl/lshitredir/id=bPBFBM9QIetQTonj4HU.qcU1zSUZyY9sBefQnfRQFFT.i7/fastid=elqxwpndcwcejnjqoyrbvheedckv/stparam=nfpsnlhfcv/roc=0/url=https%3A%2F%2Fwww.bim.com.tr%2F%3FBim_AktuelTarihKey%3D1555%26utm_campaign%3DBim_21_mart_masthead_sali_2026%26utm_source%3Dtakvim.com.tr%26utm_medium%3DMasthead-970x250%26utm_creative_format%3D970x250
+  - main [ref=e62]:
+    - heading "Takvim - Son Dakika Haberleri" [level=1] [ref=e63]
+    - generic [ref=e64]:
+      - generic [ref=e65]:
+        - generic [ref=e66]:
+          - group "1 / 22" [ref=e67]:
+            - figure [ref=e68]:
+              - 'link "Cumhurbaşkanlığı Kabinesi toplandı: Gülistan Doku, okul saldırıları ve Terörsüz Türkiye süreci masada" [ref=e69] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/guncel/2026/04/20/cumhurbaskanligi-kabinesi-toplaniyor-okul-saldirilari-masada
+                - 'img "Cumhurbaşkanlığı Kabinesi toplandı: Gülistan Doku, okul saldırıları ve Terörsüz Türkiye süreci masada" [ref=e70]'
+          - group "2 / 22" [ref=e71]:
+            - figure [ref=e72]:
+              - 'link "Tuncay Sonel’i ele veren ifade: Teşhis için aileyi çağırmadı Gülistan değil dedi" [ref=e73] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/guncel/2026/04/20/tuncay-soneli-ele-veren-ifade-teshis-icin-aileyi-cagirmadi-gulistan-degil-dedi
+                - 'img "Tuncay Sonel’i ele veren ifade: Teşhis için aileyi çağırmadı Gülistan değil dedi" [ref=e74]'
+          - group "3 / 22" [ref=e75]:
+            - figure [ref=e76]:
+              - link "BORSA İSTANBUL // NİSAN" [ref=e77] [cursor=pointer]:
+                - /url: https://pubads.g.doubleclick.net/gampad/clk?id=7219375176&iu=/31110078/takvim/desktop_web/anasayfa/advertorial_manset_click
+                - img "BORSA İSTANBUL // NİSAN" [ref=e78]
+          - group "4 / 22" [ref=e79]:
+            - figure [ref=e80]:
+              - 'link "CANLI | ABD-İran müzakerelerinde ikinci tur: Trump’tan Hürmüz ablukasında geri adım" [ref=e81] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/guncel/canli/canli-abd-iran-muzakerelerinde-ikinci-tur
+                - 'img "CANLI | ABD-İran müzakerelerinde ikinci tur: Trump’tan Hürmüz ablukasında geri adım" [ref=e82]'
+          - group "5 / 22" [ref=e83]:
+            - figure [ref=e84]:
+              - 'link "CHP’li Uşak Belediyesi’ne ikinci dalga yolsuzluk operasyonu: 28 şüpheli gözaltında" [ref=e85] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/guncel/2026/04/20/chpli-usak-belediyesine-ikinci-dalga-yolsuzluk-operasyonu
+                - 'img "CHP’li Uşak Belediyesi’ne ikinci dalga yolsuzluk operasyonu: 28 şüpheli gözaltında" [ref=e86]'
+          - group "6 / 22" [ref=e87]:
+            - figure [ref=e88]:
+              - link "Şanlıurfa ve Kahramanmaraş provokatörlerine geçit yok! Okul saldırıları sonrası 68 şüpheli tutuklandı" [ref=e89] [cursor=pointer]:
+                - /url: https://www.takvim.com.tr/guncel/2026/04/20/sanliurfa-ve-kahramanmaras-provokatorlerine-gecit-yok-68-supheli-tutuklandi
+                - img "Şanlıurfa ve Kahramanmaraş provokatörlerine geçit yok! Okul saldırıları sonrası 68 şüpheli tutuklandı" [ref=e90]
+          - group "7 / 22" [ref=e91]:
+            - figure [ref=e92]:
+              - link "D&R E-TİCARET // 20 NİSAN" [ref=e93] [cursor=pointer]:
+                - /url: https://pubads.g.doubleclick.net/gampad/clk?id=7285894732&iu=/31110078/takvim/desktop_web/anasayfa/advertorial_manset_click
+                - img "D&R E-TİCARET // 20 NİSAN" [ref=e94]
+          - group "8 / 22" [ref=e95]:
+            - figure [ref=e96]:
+              - 'link "Delil yok etme ağı çözülüyor! Eski Tunceli başhekimi Çağdaş Özdemir adliyeye sevk edildi: Hastane kaydını silmenin diyeti terfi mi?" [ref=e97] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/guncel/2026/04/20/gulistan-doku-tunceli-devlet-hastanesi-hastane-kayitlari-cagdas-ozdemir-tuncay-sonel
+                - 'img "Delil yok etme ağı çözülüyor! Eski Tunceli başhekimi Çağdaş Özdemir adliyeye sevk edildi: Hastane kaydını silmenin diyeti terfi mi?" [ref=e98]'
+          - group "9 / 22" [ref=e99]:
+            - figure [ref=e100]:
+              - 'link "Gülistan Doku cinayetinde Tuncay Sonel’i terletecek 65 soru: Devletin gücüyle delil kararttın mı?" [ref=e101] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/guncel/2026/04/20/gulistan-doku-cinayeti-eski-tunceli-valisi-tuncay-sonel-delil-karartma-sim-ve-hastane-kayitlari
+                - 'img "Gülistan Doku cinayetinde Tuncay Sonel’i terletecek 65 soru: Devletin gücüyle delil kararttın mı?" [ref=e102]'
+          - group "10 / 22" [ref=e103]:
+            - figure [ref=e104]:
+              - link "Fenerbahçe’den stopere çifte takviye! Galatasaray’a kötü haber" [ref=e105] [cursor=pointer]:
+                - /url: https://www.takvim.com.tr/fenerbahce/2026/04/20/fenerbahceden-stopere-cifte-takviye-galatasaraya-kotu-haber
+                - img "Fenerbahçe’den stopere çifte takviye! Galatasaray’a kötü haber" [ref=e106]
+          - group "11 / 22" [ref=e107]:
+            - figure [ref=e108]:
+              - 'link "Küfürbaz Grok başını yakacak: Elon Musk ifadeye... Paris-Washington karşı karşıya | X-IT yok" [ref=e109] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/dunya/kufurbaz-grok-basini-yakacak-elon-musk-ifadeye-cagrildi-paris-washington-karsi-karsiya-6414055
+                - 'img "Küfürbaz Grok başını yakacak: Elon Musk ifadeye... Paris-Washington karşı karşıya | X-IT yok" [ref=e110]'
+          - group "12 / 22" [ref=e111]:
+            - figure [ref=e112]:
+              - 'link "Yılanın başı algoritma! Tiktok çöplüğünde rezalet üstüne rezalet: Karagül örneği ve şiddeti ödüllendirme mekanizması" [ref=e113] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/guncel/2026/04/20/tiktok-coplugunde-yeni-rezalet-canli-yayinda-hemcinsini-bicaklayan-karagule-hediye-yagdi
+                - 'img "Yılanın başı algoritma! Tiktok çöplüğünde rezalet üstüne rezalet: Karagül örneği ve şiddeti ödüllendirme mekanizması" [ref=e114]'
+          - group "13 / 22" [ref=e115]:
+            - figure [ref=e116]:
+              - link "Türkiye Kupası’nda çeyrek final heyecanı! İşte maç programı ve kanallar" [ref=e117] [cursor=pointer]:
+                - /url: https://www.takvim.com.tr/turkiye-kupa/2026/04/20/turkiye-kupasinda-ceyrek-final-heyecani-iste-mac-programi-ve-kanallar
+                - img "Türkiye Kupası’nda çeyrek final heyecanı! İşte maç programı ve kanallar" [ref=e118]
+          - group "14 / 22" [ref=e119]:
+            - figure [ref=e120]:
+              - 'link "Kahramanmaraş’ta okul zili çaldı: En küçük bir tavize izin vermeyeceğiz" [ref=e121] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/guncel/2026/04/20/kahramanmarasta-okul-zili-caldi-en-kucuk-bir-tavize-izin-vermeyecegiz
+                - 'img "Kahramanmaraş’ta okul zili çaldı: En küçük bir tavize izin vermeyeceğiz" [ref=e122]'
+          - group "15 / 22" [ref=e123]:
+            - figure [ref=e124]:
+              - 'link "Müge Anlı ile Tatlı Sert’te aşk pahalıya patladı: Recep Önder yirmi yaş küçük kadına 20 bin dolarını kaptırdı" [ref=e125] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/galeri/televizyon/muge-anli-ile-tatli-sertte-ask-pahaliya-patladi-recep-onder-20-yas-kucuk-sevgilisine-20-bin-dolarini-kaptirdi
+                - 'img "Müge Anlı ile Tatlı Sert’te aşk pahalıya patladı: Recep Önder yirmi yaş küçük kadına 20 bin dolarını kaptırdı" [ref=e126]'
+          - group "16 / 22" [ref=e127]:
+            - figure [ref=e128]:
+              - 'link "Galatasaray’ın aklı 10’da: Bernardo Silva! Avrupa’dan dev rakip" [ref=e129] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/galatasaray/2026/04/20/galatasarayin-akli-10da-bernardo-silva-avrupadan-dev-rakip
+                - 'img "Galatasaray’ın aklı 10’da: Bernardo Silva! Avrupa’dan dev rakip" [ref=e130]'
+          - group "17 / 22" [ref=e131]:
+            - figure [ref=e132]:
+              - link "CHP yönetimindeki İZBETON’da 440 milyonluk kaynana vurgunu" [ref=e133] [cursor=pointer]:
+                - /url: https://www.takvim.com.tr/guncel/2026/04/20/chp-yonetimindeki-izbetonda-kaynana-skandali-kooperatif-paralari-ayni-gun-hesaba
+                - img "CHP yönetimindeki İZBETON’da 440 milyonluk kaynana vurgunu" [ref=e134]
+          - group "18 / 22" [ref=e135]:
+            - figure [ref=e136]:
+              - 'link "Yeni yağış dalgası geliyor: İstanbul dahil birçok il listede! Günlerce sürecek" [ref=e137] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/meteoroloji/2026/04/20/yeni-yagis-dalgasi-geliyor
+                - 'img "Yeni yağış dalgası geliyor: İstanbul dahil birçok il listede! Günlerce sürecek" [ref=e138]'
+          - group "19 / 22" [ref=e139]:
+            - figure [ref=e140]:
+              - link "Gülistan Doku cinayetinde Mustafa Türkay Sonel’in ifadesi çıktı! Hatırlamıyorum, tanımıyorum, bilmiyorum ezberi | Kendiyle çelişti" [ref=e141] [cursor=pointer]:
+                - /url: https://www.takvim.com.tr/guncel/2026/04/19/gulistan-doku-cinayetinde-mustafa-turkay-sonelin-ifadesi-ortaya-cikti-tutarsiz-ve-celiskili-beyan
+                - img "Gülistan Doku cinayetinde Mustafa Türkay Sonel’in ifadesi çıktı! Hatırlamıyorum, tanımıyorum, bilmiyorum ezberi | Kendiyle çelişti" [ref=e142]
+          - group "20 / 22" [ref=e143]:
+            - figure [ref=e144]:
+              - 'link "Doğum izni 24 haftaya çıkarıldı: Memur ve işçi annelerin yeni ödeme tutarları belli oldu" [ref=e145] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/ekonomi/2026/04/20/dogum-izni-24-haftaya-cikarildi-memur-ve-isci-annelerin-yeni-odeme-tutarlari-belli-oldu
+                - 'img "Doğum izni 24 haftaya çıkarıldı: Memur ve işçi annelerin yeni ödeme tutarları belli oldu" [ref=e146]'
+          - group "21 / 22" [ref=e147]:
+            - figure [ref=e148]:
+              - 'link "CHP’li Yenişehir Belediyesi’ndeki rüşvet pazarlığı: 250 bin lira ver hemen başlatırlar" [ref=e149] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/guncel/2026/04/20/chpli-yenisehir-belediyesindeki-rusvet-pazarligi-250-bin-lira-ver-hemen-baslatirlar
+                - 'img "CHP’li Yenişehir Belediyesi’ndeki rüşvet pazarlığı: 250 bin lira ver hemen başlatırlar" [ref=e150]'
+          - group "22 / 22" [ref=e151]:
+            - figure [ref=e152]:
+              - 'link "CHP’li Ataşehir’de şok tape: Açık yoksa bulun! Dört dörtlük işletmeye şerefsiz dediler!" [ref=e153] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/guncel/2026/04/19/chpli-atasehirde-sok-tape-acik-yoksa-bulun
+                - 'img "CHP’li Ataşehir’de şok tape: Açık yoksa bulun! Dört dörtlük işletmeye şerefsiz dediler!" [ref=e154]'
+        - button "Previous slide" [ref=e155] [cursor=pointer]:
+          - img [ref=e156]
+        - button "Next slide" [ref=e160] [cursor=pointer]:
+          - img [ref=e161]
+        - generic [ref=e165]:
+          - generic [ref=e166]:
+            - link "1" [ref=e167] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/guncel/2026/04/20/cumhurbaskanligi-kabinesi-toplaniyor-okul-saldirilari-masada
+              - generic [ref=e168]: "1"
+            - link "2" [ref=e169] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/guncel/2026/04/20/tuncay-soneli-ele-veren-ifade-teshis-icin-aileyi-cagirmadi-gulistan-degil-dedi
+              - generic [ref=e170]: "2"
+            - link "3" [ref=e171] [cursor=pointer]:
+              - /url: https://pubads.g.doubleclick.net/gampad/clk?id=7219375176&iu=/31110078/takvim/desktop_web/anasayfa/advertorial_manset_click
+              - generic [ref=e172]: "3"
+            - link "4" [ref=e173] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/guncel/canli/canli-abd-iran-muzakerelerinde-ikinci-tur
+              - generic [ref=e174]: "4"
+            - link "5" [ref=e175] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/guncel/2026/04/20/chpli-usak-belediyesine-ikinci-dalga-yolsuzluk-operasyonu
+              - generic [ref=e176]: "5"
+            - link "6" [ref=e177] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/guncel/2026/04/20/sanliurfa-ve-kahramanmaras-provokatorlerine-gecit-yok-68-supheli-tutuklandi
+              - generic [ref=e178]: "6"
+            - link "7" [ref=e179] [cursor=pointer]:
+              - /url: https://pubads.g.doubleclick.net/gampad/clk?id=7285894732&iu=/31110078/takvim/desktop_web/anasayfa/advertorial_manset_click
+              - generic [ref=e180]: "7"
+            - link "8" [ref=e181] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/guncel/2026/04/20/gulistan-doku-tunceli-devlet-hastanesi-hastane-kayitlari-cagdas-ozdemir-tuncay-sonel
+              - generic [ref=e182]: "8"
+            - link "9" [ref=e183] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/guncel/2026/04/20/gulistan-doku-cinayeti-eski-tunceli-valisi-tuncay-sonel-delil-karartma-sim-ve-hastane-kayitlari
+              - generic [ref=e184]: "9"
+            - link "10" [ref=e185] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/fenerbahce/2026/04/20/fenerbahceden-stopere-cifte-takviye-galatasaraya-kotu-haber
+              - generic [ref=e186]: "10"
+            - link "11" [ref=e187] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/dunya/kufurbaz-grok-basini-yakacak-elon-musk-ifadeye-cagrildi-paris-washington-karsi-karsiya-6414055
+              - generic [ref=e188]: "11"
+            - link "12" [ref=e189] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/guncel/2026/04/20/tiktok-coplugunde-yeni-rezalet-canli-yayinda-hemcinsini-bicaklayan-karagule-hediye-yagdi
+              - generic [ref=e190]: "12"
+            - link "13" [ref=e191] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/turkiye-kupa/2026/04/20/turkiye-kupasinda-ceyrek-final-heyecani-iste-mac-programi-ve-kanallar
+              - generic [ref=e192]: "13"
+            - link "14" [ref=e193] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/guncel/2026/04/20/kahramanmarasta-okul-zili-caldi-en-kucuk-bir-tavize-izin-vermeyecegiz
+              - generic [ref=e194]: "14"
+            - link "15" [ref=e195] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/galeri/televizyon/muge-anli-ile-tatli-sertte-ask-pahaliya-patladi-recep-onder-20-yas-kucuk-sevgilisine-20-bin-dolarini-kaptirdi
+              - generic [ref=e196]: "15"
+            - link "16" [ref=e197] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/galatasaray/2026/04/20/galatasarayin-akli-10da-bernardo-silva-avrupadan-dev-rakip
+              - generic [ref=e198]: "16"
+            - link "17" [ref=e199] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/guncel/2026/04/20/chp-yonetimindeki-izbetonda-kaynana-skandali-kooperatif-paralari-ayni-gun-hesaba
+              - generic [ref=e200]: "17"
+            - link "18" [ref=e201] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/meteoroloji/2026/04/20/yeni-yagis-dalgasi-geliyor
+              - generic [ref=e202]: "18"
+            - link "19" [ref=e203] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/guncel/2026/04/19/gulistan-doku-cinayetinde-mustafa-turkay-sonelin-ifadesi-ortaya-cikti-tutarsiz-ve-celiskili-beyan
+              - generic [ref=e204]: "19"
+            - link "20" [ref=e205] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/ekonomi/2026/04/20/dogum-izni-24-haftaya-cikarildi-memur-ve-isci-annelerin-yeni-odeme-tutarlari-belli-oldu
+              - generic [ref=e206]: "20"
+            - link "21" [ref=e207] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/guncel/2026/04/20/chpli-yenisehir-belediyesindeki-rusvet-pazarligi-250-bin-lira-ver-hemen-baslatirlar
+              - generic [ref=e208]: "21"
+            - link "22" [ref=e209] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/guncel/2026/04/19/chpli-atasehirde-sok-tape-acik-yoksa-bulun
+              - generic [ref=e210]: "22"
+          - link "Tüm Manşetler" [ref=e211] [cursor=pointer]:
+            - /url: /tum-mansetler
+            - text: TÜMÜ
+      - generic [ref=e212]:
+        - generic [ref=e213]:
+          - link "Euro 52,8491" [ref=e215] [cursor=pointer]:
+            - /url: /ekonomi
+            - generic [ref=e216]:
+              - text: Euro
+              - img [ref=e217]
+            - text: 52,8491
+          - link "Dolar 44,8799" [ref=e222] [cursor=pointer]:
+            - /url: /ekonomi
+            - generic [ref=e223]:
+              - text: Dolar
+              - img [ref=e224]
+            - text: 44,8799
+          - link "Altın 6.936,174" [ref=e229] [cursor=pointer]:
+            - /url: finans/altin
+            - generic [ref=e230]:
+              - text: Altın
+              - img [ref=e231]
+            - text: 6.936,174
+          - link "Gümüş 115,36" [ref=e236] [cursor=pointer]:
+            - /url: finans/gumus
+            - generic [ref=e237]:
+              - text: Gümüş
+              - img [ref=e238]
+            - text: 115,36
+          - link "Bitcoin 75.098,03" [ref=e243] [cursor=pointer]:
+            - /url: /ekonomi
+            - generic [ref=e244]:
+              - text: Bitcoin
+              - img [ref=e245]
+            - text: 75.098,03
+          - link "Bist 14.525,490" [ref=e250] [cursor=pointer]:
+            - /url: /ekonomi
+            - generic [ref=e251]:
+              - text: Bist
+              - img [ref=e252]
+            - text: 14.525,490
+          - link "Faiz 39,88" [ref=e257] [cursor=pointer]:
+            - /url: /ekonomi
+            - generic [ref=e258]:
+              - text: Faiz
+              - img [ref=e259]
+            - text: 39,88
+        - generic [ref=e263]:
+          - generic [ref=e264]:
+            - combobox [ref=e266] [cursor=pointer]:
+              - option "Adana"
+              - option "Adıyaman"
+              - option "Afyonkarahisar"
+              - option "Ağrı"
+              - option "Aksaray"
+              - option "Amasya"
+              - option "Ankara"
+              - option "Antalya"
+              - option "Ardahan"
+              - option "Artvin"
+              - option "Aydın"
+              - option "Balıkesir"
+              - option "Bartın"
+              - option "Batman"
+              - option "Bayburt"
+              - option "Bilecik"
+              - option "Bingöl"
+              - option "Bitlis"
+              - option "Bolu"
+              - option "Burdur"
+              - option "Bursa" [selected]
+              - option "Çanakkale"
+              - option "Çankırı"
+              - option "Çorum"
+              - option "Denizli"
+              - option "Diyarbakır"
+              - option "Düzce"
+              - option "Edirne"
+              - option "Elazığ"
+              - option "Erzincan"
+              - option "Erzurum"
+              - option "Eskişehir"
+              - option "Gaziantep"
+              - option "Giresun"
+              - option "Gümüşhane"
+              - option "Hakkari"
+              - option "Hatay"
+              - option "Iğdır"
+              - option "Isparta"
+              - option "İstanbul"
+              - option "İzmir"
+              - option "Kahramanmaraş"
+              - option "Karabük"
+              - option "Karaman"
+              - option "Kars"
+              - option "Kastamonu"
+              - option "Kayseri"
+              - option "Kırıkkale"
+              - option "Kırklareli"
+              - option "Kırşehir"
+              - option "Kilis"
+              - option "Kocaeli"
+              - option "Konya"
+              - option "Kütahya"
+              - option "Malatya"
+              - option "Manisa"
+              - option "Mardin"
+              - option "Mersin"
+              - option "Muğla"
+              - option "Muş"
+              - option "Nevşehir"
+              - option "Niğde"
+              - option "Ordu"
+              - option "Osmaniye"
+              - option "Rize"
+              - option "Sakarya"
+              - option "Samsun"
+              - option "Siirt"
+              - option "Sinop"
+              - option "Sivas"
+              - option "Şanlıurfa"
+              - option "Şırnak"
+              - option "Tekirdağ"
+              - option "Tokat"
+              - option "Trabzon"
+              - option "Tunceli"
+              - option "Uşak"
+              - option "Van"
+              - option "Yalova"
+              - option "Yozgat"
+              - option "Zonguldak"
+            - link "Hava Durumu" [ref=e267] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/hava-durumu
+              - img "Bursa hava durumu" [ref=e268]
+              - generic [ref=e269]:
+                - text: "20"
+                - superscript [ref=e270]: °
+          - link "namaz vakti" [ref=e271] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/namaz-vakitleri
+            - img "Namaz Vakti" [ref=e272]
+            - paragraph [ref=e273]:
+              - generic [ref=e274]: İkindiye
+              - time [ref=e275]: 00:29:59
+      - generic [ref=e276]:
+        - generic [ref=e277]:
+          - generic [ref=e278]:
+            - group "1 / 15" [ref=e279]:
+              - figure [ref=e280]:
+                - 'link "Mahmut Tuncer yakın dostu İbrahim Tatlıses’i hastanede ziyaret etti: Abim aslanlar gibi I Son hali dikkat çekti" [ref=e281] [cursor=pointer]':
+                  - /url: https://www.takvim.com.tr/magazin/2026/04/20/mahmut-tuncer-ibrahim-tatlisesi-hastanede-ziyaret-etti
+                  - 'img "Mahmut Tuncer yakın dostu İbrahim Tatlıses’i hastanede ziyaret etti: Abim aslanlar gibi I Son hali dikkat çekti" [ref=e282]'
+            - group "2 / 15" [ref=e283]:
+              - figure [ref=e284]:
+                - link "Osimhen için kupada derbi provası! Önce 20 dakika sonra ilk 11" [ref=e285] [cursor=pointer]:
+                  - /url: https://www.takvim.com.tr/galatasaray/2026/04/20/osimhen-icin-kupada-derbi-provasi-once-20-dakika-sonra-ilk-11
+                  - img "Osimhen için kupada derbi provası! Önce 20 dakika sonra ilk 11" [ref=e286]
+            - group "3 / 15" [ref=e287]:
+              - figure [ref=e288]:
+                - 'link "Selahattin Paşalı’nın evliliğindeki ihanet iddiasında yeni gelişme: Lara Paşalı düğün fotoğraflarını kaldırdı I Diziyi takipten çıktı" [ref=e289] [cursor=pointer]':
+                  - /url: https://www.takvim.com.tr/magazin/2026/04/20/selahattin-pasalinin-ihanet-iddiasinda-yeni-gelisme
+                  - 'img "Selahattin Paşalı’nın evliliğindeki ihanet iddiasında yeni gelişme: Lara Paşalı düğün fotoğraflarını kaldırdı I Diziyi takipten çıktı" [ref=e290]'
+            - group "4 / 15" [ref=e291]:
+              - figure [ref=e292]:
+                - link "Serdar Turan–Çılga Turan boşanması 10 dakikada bitti! ’Tuba Ünsal’la çekilmiş ihanet fotoğrafları beni yıprattı’" [ref=e293] [cursor=pointer]:
+                  - /url: https://www.takvim.com.tr/magazin/2026/04/20/serdar-turancilga-turan-bosanmasi-10-dakika-surdu
+                  - img "Serdar Turan–Çılga Turan boşanması 10 dakikada bitti! ’Tuba Ünsal’la çekilmiş ihanet fotoğrafları beni yıprattı’" [ref=e294]
+            - group "5 / 15" [ref=e295]:
+              - figure [ref=e296]:
+                - 'link "İş insanı Ömer Koç fotoğrafını çeken muhabiri çembere aldı: Hemen o fotoğrafları silin" [ref=e297] [cursor=pointer]':
+                  - /url: https://www.takvim.com.tr/magazin/2026/04/20/omer-koc-muhabire-sert-cikti
+                  - 'img "İş insanı Ömer Koç fotoğrafını çeken muhabiri çembere aldı: Hemen o fotoğrafları silin" [ref=e298]'
+            - group "6 / 15" [ref=e299]:
+              - figure [ref=e300]:
+                - 'link "A.B.İ.’nin güzel oyuncusu Afra Saraçoğlu’na her dilde övgü: İtalya sokaklarına damga vurdu" [ref=e301] [cursor=pointer]':
+                  - /url: https://www.takvim.com.tr/magazin/2026/04/20/afra-saracogluna-her-dilde-ovgu
+                  - 'img "A.B.İ.’nin güzel oyuncusu Afra Saraçoğlu’na her dilde övgü: İtalya sokaklarına damga vurdu" [ref=e302]'
+            - group "7 / 15" [ref=e303]:
+              - figure [ref=e304]:
+                - 'link "14 yılda 10 milyon vatandaşa güvenli yuva: Kentsel dönüşümde tarihi eşik aşıldı" [ref=e305] [cursor=pointer]':
+                  - /url: https://www.takvim.com.tr/ekonomi/2026/04/20/14-yilda-10-milyon-vatandasa-guvenli-yuva-kentsel-donusumde-tarihi-esik-asildi
+                  - 'img "14 yılda 10 milyon vatandaşa güvenli yuva: Kentsel dönüşümde tarihi eşik aşıldı" [ref=e306]'
+            - group "8 / 15" [ref=e307]:
+              - figure [ref=e308]:
+                - 'link "Milyoner’de 200 bin TL’lik Kurban Bayramı sorusu: İki joker birden gitti!" [ref=e309] [cursor=pointer]':
+                  - /url: https://www.takvim.com.tr/televizyon/2026/04/19/milyonerde-200-bin-tllik-kurban-bayrami-sorusu-iki-joker-birden-gitti
+                  - 'img "Milyoner’de 200 bin TL’lik Kurban Bayramı sorusu: İki joker birden gitti!" [ref=e310]'
+            - group "9 / 15" [ref=e311]:
+              - figure [ref=e312]:
+                - link "Avrupa’nın kraliçesi Kanarya! Fenerbahçe Kadınlar Euroleague finalinde Galatasaray’ı 68-55 yendi" [ref=e313] [cursor=pointer]:
+                  - /url: https://www.takvim.com.tr/basketbol/2026/04/19/avrupanin-kralicesi-kanarya-fenerbahce-kadinlar-euroleague-finalinde-galatasarayi-68-55-yendi
+                  - img "Avrupa’nın kraliçesi Kanarya! Fenerbahçe Kadınlar Euroleague finalinde Galatasaray’ı 68-55 yendi" [ref=e314]
+            - group "10 / 15" [ref=e315]:
+              - figure [ref=e316]:
+                - link "Süper Lig’de güncel puan durumu! 2025-26 sezonu 30. hafta" [ref=e317] [cursor=pointer]:
+                  - /url: https://www.takvim.com.tr/galeri/spor/super-ligde-guncel-puan-durumu-2025-26-sezonu-30-hafta
+                  - img "Süper Lig’de güncel puan durumu! 2025-26 sezonu 30. hafta" [ref=e318]
+            - group "11 / 15" [ref=e319]:
+              - figure [ref=e320]:
+                - link "Sultanlar Ligi’nde şampiyon Vakıfbank! Fenerbahçe Medicana’yı 3-2 yenip kupaya uzandı" [ref=e321] [cursor=pointer]:
+                  - /url: https://www.takvim.com.tr/spor/2026/04/19/sultanlar-liginde-sampiyon-vakifbank-fenerbahce-medicanayi-3-2-yenip-kupaya-uzandi
+                  - img "Sultanlar Ligi’nde şampiyon Vakıfbank! Fenerbahçe Medicana’yı 3-2 yenip kupaya uzandı" [ref=e322]
+            - group "12 / 15" [ref=e323]:
+              - figure [ref=e324]:
+                - link "Fenerbahçe istedi Beşiktaş kapıyor! Dünya yıldızı Süper Lig yolunda" [ref=e325] [cursor=pointer]:
+                  - /url: https://www.takvim.com.tr/besiktas/2026/04/19/fenerbahce-istedi-besiktas-kapiyor-dunya-yildizi-super-lig-yolunda
+                  - img "Fenerbahçe istedi Beşiktaş kapıyor! Dünya yıldızı Süper Lig yolunda" [ref=e326]
+            - group "13 / 15" [ref=e327]:
+              - figure [ref=e328]:
+                - 'link "Bülent Ersoy’dan İbrahim Tatlıses açıklaması: Işıltılı takıları ve yalnızlık itirafı dikkat çekti" [ref=e329] [cursor=pointer]':
+                  - /url: https://www.takvim.com.tr/magazin/2026/04/19/bulent-ersoydan-ibrahim-tatlises-aciklamasi
+                  - 'img "Bülent Ersoy’dan İbrahim Tatlıses açıklaması: Işıltılı takıları ve yalnızlık itirafı dikkat çekti" [ref=e330]'
+            - group "14 / 15" [ref=e331]:
+              - figure [ref=e332]:
+                - 'link "İstanbul’da sahte ikamet çetesi çökertildi: 72 şüpheli yakalandı" [ref=e333] [cursor=pointer]':
+                  - /url: https://www.takvim.com.tr/guncel/2026/04/19/istanbulda-sahte-ikamet-cetesi-cokertildi-72-supheli-yakalandi
+                  - 'img "İstanbul’da sahte ikamet çetesi çökertildi: 72 şüpheli yakalandı" [ref=e334]'
+            - group "15 / 15" [ref=e335]:
+              - figure [ref=e336]:
+                - 'link "Dilan Polat ve Engin Polat çifti boşanıyor mu? Ünlü fenomen öfke kustu: Burnu burnuna değmiş bir milim kalmış" [ref=e337] [cursor=pointer]':
+                  - /url: https://www.takvim.com.tr/magazin/2026/04/19/dilan-polat-ve-engin-polat-cifti-bosaniyor
+                  - 'img "Dilan Polat ve Engin Polat çifti boşanıyor mu? Ünlü fenomen öfke kustu: Burnu burnuna değmiş bir milim kalmış" [ref=e338]'
+          - button "Previous slide" [ref=e339] [cursor=pointer]:
+            - img [ref=e340]
+          - button "Next slide" [ref=e344] [cursor=pointer]:
+            - img [ref=e345]
+          - generic [ref=e349]:
+            - link "1" [ref=e350] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/magazin/2026/04/20/mahmut-tuncer-ibrahim-tatlisesi-hastanede-ziyaret-etti
+            - link "2" [ref=e351] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/galatasaray/2026/04/20/osimhen-icin-kupada-derbi-provasi-once-20-dakika-sonra-ilk-11
+            - link "3" [ref=e352] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/magazin/2026/04/20/selahattin-pasalinin-ihanet-iddiasinda-yeni-gelisme
+            - link "4" [ref=e353] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/magazin/2026/04/20/serdar-turancilga-turan-bosanmasi-10-dakika-surdu
+            - link "5" [ref=e354] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/magazin/2026/04/20/omer-koc-muhabire-sert-cikti
+            - link "6" [ref=e355] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/magazin/2026/04/20/afra-saracogluna-her-dilde-ovgu
+            - link "7" [ref=e356] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/ekonomi/2026/04/20/14-yilda-10-milyon-vatandasa-guvenli-yuva-kentsel-donusumde-tarihi-esik-asildi
+            - link "8" [ref=e357] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/televizyon/2026/04/19/milyonerde-200-bin-tllik-kurban-bayrami-sorusu-iki-joker-birden-gitti
+            - link "9" [ref=e358] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/basketbol/2026/04/19/avrupanin-kralicesi-kanarya-fenerbahce-kadinlar-euroleague-finalinde-galatasarayi-68-55-yendi
+            - link "10" [ref=e359] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/galeri/spor/super-ligde-guncel-puan-durumu-2025-26-sezonu-30-hafta
+            - link "11" [ref=e360] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/spor/2026/04/19/sultanlar-liginde-sampiyon-vakifbank-fenerbahce-medicanayi-3-2-yenip-kupaya-uzandi
+            - link "12" [ref=e361] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/besiktas/2026/04/19/fenerbahce-istedi-besiktas-kapiyor-dunya-yildizi-super-lig-yolunda
+            - link "13" [ref=e362] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/magazin/2026/04/19/bulent-ersoydan-ibrahim-tatlises-aciklamasi
+            - link "14" [ref=e363] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/guncel/2026/04/19/istanbulda-sahte-ikamet-cetesi-cokertildi-72-supheli-yakalandi
+            - link "15" [ref=e364] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/magazin/2026/04/19/dilan-polat-ve-engin-polat-cifti-bosaniyor
+        - generic [ref=e366]:
+          - 'figure "Silah tacirlerine eş zamanlı operasyon: Binlerce ruhsatsız tabanca yakalandı" [ref=e368]':
+            - 'link "Silah tacirlerine eş zamanlı operasyon: Binlerce ruhsatsız tabanca yakalandı" [ref=e369] [cursor=pointer]':
+              - /url: https://www.takvim.com.tr/guncel/2026/04/19/silah-tacirlerine-es-zamanli-operasyon-binlerce-ruhsatsiz-tabanca-yakalandi
+              - generic: BİNLERCESİ ELE GEÇİRİLDİ
+            - 'link "Silah tacirlerine eş zamanlı operasyon: Binlerce ruhsatsız tabanca yakalandı" [ref=e371] [cursor=pointer]':
+              - /url: https://www.takvim.com.tr/guncel/2026/04/19/silah-tacirlerine-es-zamanli-operasyon-binlerce-ruhsatsiz-tabanca-yakalandi
+              - generic [ref=e372]: Silah tacirlerine baskın
+          - 'figure "CHP''nin Epstein''ı Uşak! Yalım Garden ve pavyonlardan \"seks arşivi\" çıktı: Özgür Özel Özkan Yalım''ın otelinde sabahladı mı?" [ref=e374]':
+            - 'link "CHP''nin Epstein''ı Uşak! Yalım Garden ve pavyonlardan \"seks arşivi\" çıktı: Özgür Özel Özkan Yalım''ın otelinde sabahladı mı?" [ref=e375] [cursor=pointer]':
+              - /url: https://www.takvim.com.tr/guncel/2026/04/19/usakta-chpli-ozkan-yalima-ait-yalim-garden-ve-pavyonlardan-seks-arsivi-cikti
+            - 'link "CHP''nin Epstein''ı Uşak! Yalım Garden ve pavyonlardan \"seks arşivi\" çıktı: Özgür Özel Özkan Yalım''ın otelinde sabahladı mı?" [ref=e377] [cursor=pointer]':
+              - /url: https://www.takvim.com.tr/guncel/2026/04/19/usakta-chpli-ozkan-yalima-ait-yalim-garden-ve-pavyonlardan-seks-arsivi-cikti
+              - generic [ref=e378]: Özkan Yalım'ın müstehcen arşivi patladı
+      - generic [ref=e379]:
+        - figure "Fenerbahçe'nin Konya kafilesi belli oldu! Derbi öncesi 3 eksik" [ref=e381]:
+          - link "Fenerbahçe'nin Konya kafilesi belli oldu! Derbi öncesi 3 eksik" [ref=e382] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/turkiye-kupa/2026/04/20/fenerbahcenin-konya-kafilesi-belli-oldu-derbi-oncesi-2-eksik
+            - generic: DERBİ ÖNCESİ 3 EKSİK
+          - link "Fenerbahçe'nin Konya kafilesi belli oldu! Derbi öncesi 3 eksik" [ref=e384] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/turkiye-kupa/2026/04/20/fenerbahcenin-konya-kafilesi-belli-oldu-derbi-oncesi-2-eksik
+            - generic [ref=e385]: F.Bahçe'nin Konya kafilesi belli oldu!
+        - figure "ZTK'da Konyaspor - Fenerbahçe maçını Ozan Ergün yönetecek" [ref=e387]:
+          - link "ZTK'da Konyaspor - Fenerbahçe maçını Ozan Ergün yönetecek" [ref=e388] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/turkiye-kupa/2026/04/20/ztkda-konyaspor-fenerbahce-macini-ozan-ergun-yonetecek
+            - generic: ZTK'DA ÇEYREK FİNAL HEYECANI
+          - link "ZTK'da Konyaspor - Fenerbahçe maçını Ozan Ergün yönetecek" [ref=e390] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/turkiye-kupa/2026/04/20/ztkda-konyaspor-fenerbahce-macini-ozan-ergun-yonetecek
+            - generic [ref=e391]: Fenerbahçe maçının hakemi belli oldu!
+        - 'figure "Avukat cinayetinde şok detay: Talimat Siirtli Naci''den geldi | İddianame tamam: 16 şüpheliye müebbet talebi" [ref=e393]':
+          - 'link "Avukat cinayetinde şok detay: Talimat Siirtli Naci''den geldi | İddianame tamam: 16 şüpheliye müebbet talebi" [ref=e394] [cursor=pointer]':
+            - /url: https://www.takvim.com.tr/yasam/2026/04/20/avukat-cinayetinde-sok-detay-talimat-siirtli-naciden-geldi
+            - generic: KARMA TİMLE İNFAZ ETTİLER!
+          - 'link "Avukat cinayetinde şok detay: Talimat Siirtli Naci''den geldi | İddianame tamam: 16 şüpheliye müebbet talebi" [ref=e396] [cursor=pointer]':
+            - /url: https://www.takvim.com.tr/yasam/2026/04/20/avukat-cinayetinde-sok-detay-talimat-siirtli-naciden-geldi
+            - generic [ref=e397]: Avukat cinayetinde çete detayı
+        - figure "Dünya Kupası'nda Super Bowl modeli! Devre arası 25 dakikaya çıkacak" [ref=e399]:
+          - link "Dünya Kupası'nda Super Bowl modeli! Devre arası 25 dakikaya çıkacak" [ref=e400] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/spor/2026/04/20/dunya-kupasinda-super-bowl-modeli-devre-arasi-25-dakikaya-cikacak
+            - generic: DEVRE ARASI UZAYACAK
+          - link "Dünya Kupası'nda Super Bowl modeli! Devre arası 25 dakikaya çıkacak" [ref=e402] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/spor/2026/04/20/dunya-kupasinda-super-bowl-modeli-devre-arasi-25-dakikaya-cikacak
+            - generic [ref=e403]: Dünya Kupası'nda Super Bowl modeli!
+      - generic [ref=e404]:
+        - figure "Fenerbahçe'de Sidiki Cherif alarmı! Nesyri'den az Duran'la bir" [ref=e405]:
+          - link "Fenerbahçe'de Sidiki Cherif alarmı! Nesyri'den az Duran'la bir" [ref=e406] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/fenerbahce/2026/04/20/fenerbahcede-sidiki-cherif-alarmi-nesyriden-az-duranla-bir
+            - generic: NESYRI'DEN AZ DURAN'LA BİR
+          - link "Fenerbahçe'de Sidiki Cherif alarmı! Nesyri'den az Duran'la bir" [ref=e408] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/fenerbahce/2026/04/20/fenerbahcede-sidiki-cherif-alarmi-nesyriden-az-duranla-bir
+            - generic [ref=e409]: Fenerbahçe'de Sidiki Cherif alarmı!
+        - figure "Ankara'da boya fabrikasındaki yangın patlamalarla büyüdü | 1 ölü 2 yaralı" [ref=e410]:
+          - link "Ankara'da boya fabrikasındaki yangın patlamalarla büyüdü | 1 ölü 2 yaralı" [ref=e411] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/guncel/2026/04/20/ankarada-boya-fabrikasinda-yangin-patlamalarla-buyudu
+            - generic: CANSIZ BEDENİNE ULAŞILDI
+          - link "Ankara'da boya fabrikasındaki yangın patlamalarla büyüdü | 1 ölü 2 yaralı" [ref=e413] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/guncel/2026/04/20/ankarada-boya-fabrikasinda-yangin-patlamalarla-buyudu
+            - generic [ref=e414]: Boya fabrikası yangınından acı haber
+        - figure "Japonya'da 7,4 büyüklüğünde deprem" [ref=e415]:
+          - link "Japonya'da 7,4 büyüklüğünde deprem" [ref=e416] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/dunya/japonyada-74-buyuklugunde-deprem-6413985
+            - generic: JAPONYA'DA 7,4'LÜK DEPREM
+          - link "Japonya'da 7,4 büyüklüğünde deprem" [ref=e418] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/dunya/japonyada-74-buyuklugunde-deprem-6413985
+            - generic [ref=e419]: Ülkede tsunami uyarısı yapıldı
+        - 'figure "Özgür Özel''den Batı’ya şikayet turu: Avrupa’da Türkiye’yi hedef aldı! Özel’den Erdoğan’ın sloganıyla çelişkili çıkış" [ref=e420]':
+          - 'link "Özgür Özel''den Batı’ya şikayet turu: Avrupa’da Türkiye’yi hedef aldı! Özel’den Erdoğan’ın sloganıyla çelişkili çıkış" [ref=e421] [cursor=pointer]':
+            - /url: https://www.takvim.com.tr/guncel/2026/04/19/ozgur-ozelden-batiya-sikayet-turu-avrupada-turkiyeyi-hedef-aldi
+          - 'link "Özgür Özel''den Batı’ya şikayet turu: Avrupa’da Türkiye’yi hedef aldı! Özel’den Erdoğan’ın sloganıyla çelişkili çıkış" [ref=e423] [cursor=pointer]':
+            - /url: https://www.takvim.com.tr/guncel/2026/04/19/ozgur-ozelden-batiya-sikayet-turu-avrupada-turkiyeyi-hedef-aldi
+            - generic [ref=e424]: Avrupa’da Türkiye’yi hedef aldı
+        - 'figure "2026 vekaletle kurban kesim bedelleri açıklandı: Yurt içi ve yurt dışı ücreti ne kadar?" [ref=e425]':
+          - 'link "2026 vekaletle kurban kesim bedelleri açıklandı: Yurt içi ve yurt dışı ücreti ne kadar?" [ref=e426] [cursor=pointer]':
+            - /url: https://www.takvim.com.tr/ekonomi/2026/04/20/2026-vekaletle-kurban-kesim-bedelleri-aciklandi
+            - generic: DİYANET DUYURDU
+          - 'link "2026 vekaletle kurban kesim bedelleri açıklandı: Yurt içi ve yurt dışı ücreti ne kadar?" [ref=e428] [cursor=pointer]':
+            - /url: https://www.takvim.com.tr/ekonomi/2026/04/20/2026-vekaletle-kurban-kesim-bedelleri-aciklandi
+            - generic [ref=e429]: Vekaletle kurban kesim bedelleri açıklandı
+    - generic [ref=e432]:
+      - 'figure "Küresel uyuşturucu ağına yönelik soruşturmada iddianame hazır: 14 şirket 35 şüpheli" [ref=e434]':
+        - 'link "Küresel uyuşturucu ağına yönelik soruşturmada iddianame hazır: 14 şirket 35 şüpheli" [ref=e435] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/guncel/2026/04/20/kuresel-uyusturucu-agina-yonelik-sorusturmada-iddianame-hazir-14-sirket-35-supheli
+          - generic: KÜRESEL ZEHİR AĞINDA İDDİANAME HAZIR
+        - 'link "Küresel uyuşturucu ağına yönelik soruşturmada iddianame hazır: 14 şirket 35 şüpheli" [ref=e437] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/guncel/2026/04/20/kuresel-uyusturucu-agina-yonelik-sorusturmada-iddianame-hazir-14-sirket-35-supheli
+          - generic [ref=e438]: Listede 14 şirket 35 şüpheli var
+      - 'figure "Borsa İstanbul’da rekorlar haftası: 2026 yükselişi geçen yılı ikiye katladı" [ref=e440]':
+        - 'link "Borsa İstanbul’da rekorlar haftası: 2026 yükselişi geçen yılı ikiye katladı" [ref=e441] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/ekonomi/2026/04/20/borsa-istanbulda-rekorlar-haftasi-2026-yukselisi-gecen-yili-ikiye-katladi
+        - 'link "Borsa İstanbul’da rekorlar haftası: 2026 yükselişi geçen yılı ikiye katladı" [ref=e443] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/ekonomi/2026/04/20/borsa-istanbulda-rekorlar-haftasi-2026-yukselisi-gecen-yili-ikiye-katladi
+          - generic [ref=e444]: Borsa İstanbul 2025’i katladı
+      - generic [ref=e452]:
+        - region "Video Player" [ref=e454]:
+          - application [ref=e455]
+          - button "Play Video" [ref=e457] [cursor=pointer]:
+            - text: 
+            - generic [ref=e458]: Play Video
+          - text:              
+        - text: ..
+      - figure "Aziz İhsan Aktaş hakkında “tedbirler kaldırıldı” iddiası yalan çıktı! Murat Ağırel’in algı operasyonu çöktü!" [ref=e460]:
+        - link "Aziz İhsan Aktaş hakkında “tedbirler kaldırıldı” iddiası yalan çıktı! Murat Ağırel’in algı operasyonu çöktü!" [ref=e461] [cursor=pointer]:
+          - /url: https://www.takvim.com.tr/guncel/2026/04/19/aziz-ihsan-aktas-hakkinda-tedbirler-kaldirildi-iddiasi-yalan-cikti
+          - generic: AZİZ İHSAN DOSYASINDA MANİPÜLASYON ÇÖKTÜ
+        - link "Aziz İhsan Aktaş hakkında “tedbirler kaldırıldı” iddiası yalan çıktı! Murat Ağırel’in algı operasyonu çöktü!" [ref=e463] [cursor=pointer]:
+          - /url: https://www.takvim.com.tr/guncel/2026/04/19/aziz-ihsan-aktas-hakkinda-tedbirler-kaldirildi-iddiasi-yalan-cikti
+          - generic [ref=e464]: Tedbirler kaldırıldı iddiası yalan çıktı
+      - figure "T.C. EDİRNE 2. ASLİYE HUKUK MAHKEMESİNDEN" [ref=e466]:
+        - link "T.C. EDİRNE 2. ASLİYE HUKUK MAHKEMESİNDEN" [ref=e467] [cursor=pointer]:
+          - /url: https://www.takvim.com.tr/resmi-ilan/2026/04/19/tc-edirne-2-asliye-hukuk-mahkemesinden
+          - emphasis: Resmi İlandır
+        - link "T.C. EDİRNE 2. ASLİYE HUKUK MAHKEMESİNDEN" [ref=e469] [cursor=pointer]:
+          - /url: https://www.takvim.com.tr/resmi-ilan/2026/04/19/tc-edirne-2-asliye-hukuk-mahkemesinden
+          - generic [ref=e470]: T.C. EDİRNE 2. ASLİYE HUKUK MAHKEMESİNDEN
+      - 'figure "Ataşehir’de rüşvet çığlığı: “Parçala Behçet oldum resmen!” Vurgun tarifesine operasyon korkusu zammı | Arsız tapelere Takvim ulaştı" [ref=e472]':
+        - 'link "Ataşehir’de rüşvet çığlığı: “Parçala Behçet oldum resmen!” Vurgun tarifesine operasyon korkusu zammı | Arsız tapelere Takvim ulaştı" [ref=e473] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/guncel/2026/04/19/atasehir-belediyesinde-rusvet-cigligi-parcala-behcet-oldum-resmen
+        - 'link "Ataşehir’de rüşvet çığlığı: “Parçala Behçet oldum resmen!” Vurgun tarifesine operasyon korkusu zammı | Arsız tapelere Takvim ulaştı" [ref=e475] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/guncel/2026/04/19/atasehir-belediyesinde-rusvet-cigligi-parcala-behcet-oldum-resmen
+          - generic [ref=e476]: Ataşehir'de arsız tapelere Takvim ulaştı
+      - figure "Okan Buruk’tan yönetime hakem tepkisi! 3 maçtan örnek" [ref=e478]:
+        - link "Okan Buruk’tan yönetime hakem tepkisi! 3 maçtan örnek" [ref=e479] [cursor=pointer]:
+          - /url: https://www.takvim.com.tr/galatasaray/2026/04/20/okan-buruktan-yonetime-hakem-tepkisi
+          - generic: 3 MAÇTAN ÖRNEK
+        - link "Okan Buruk’tan yönetime hakem tepkisi! 3 maçtan örnek" [ref=e481] [cursor=pointer]:
+          - /url: https://www.takvim.com.tr/galatasaray/2026/04/20/okan-buruktan-yonetime-hakem-tepkisi
+          - generic [ref=e482]: Okan Buruk’tan yönetime hakem tepkisi
+      - 'figure "Avcılar''da zehir tacirlerine operasyon: 172 kilogram uyuşturucu 4 tutuklama" [ref=e484]':
+        - 'link "Avcılar''da zehir tacirlerine operasyon: 172 kilogram uyuşturucu 4 tutuklama" [ref=e485] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/guncel/2026/04/19/avcilarda-zehir-tacirlerine-operasyon-172-kilogram-uyusturucu-4-tutuklama
+          - generic: 172 KİLOGRAM UYUŞTURUCU
+        - 'link "Avcılar''da zehir tacirlerine operasyon: 172 kilogram uyuşturucu 4 tutuklama" [ref=e487] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/guncel/2026/04/19/avcilarda-zehir-tacirlerine-operasyon-172-kilogram-uyusturucu-4-tutuklama
+          - generic [ref=e488]: Zehir tacirlerine darbe!
+    - generic [ref=e489]:
+      - 'figure "Başkentte eğlence mekanlarına insan ticareti operasyonu: 29 gözaltı | Temizlikçi izniyle getirmişler" [ref=e491]':
+        - 'link "Başkentte eğlence mekanlarına insan ticareti operasyonu: 29 gözaltı | Temizlikçi izniyle getirmişler" [ref=e492] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/guncel/2026/04/20/baskentte-eglence-mekanlarina-insan-ticareti-operasyonu-29-gozalti-temizlikci-izniyle-getirmisler
+          - generic: TEMİZLİKÇİ DİYE GELDİ DİREK DANSI YAPTIRILDI
+        - 'link "Başkentte eğlence mekanlarına insan ticareti operasyonu: 29 gözaltı | Temizlikçi izniyle getirmişler" [ref=e494] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/guncel/2026/04/20/baskentte-eglence-mekanlarina-insan-ticareti-operasyonu-29-gozalti-temizlikci-izniyle-getirmisler
+          - generic [ref=e495]: Kons çetesine gece baskını
+      - figure "Eşme Belediyesi’ndeki rüşvet ağı soruşturmasında şüpheliler adliyede | Başkan Tozan ve eşi ne anlatacak?" [ref=e497]:
+        - link "Eşme Belediyesi’ndeki rüşvet ağı soruşturmasında şüpheliler adliyede | Başkan Tozan ve eşi ne anlatacak?" [ref=e498] [cursor=pointer]:
+          - /url: https://www.takvim.com.tr/guncel/2026/04/20/esme-belediyesindeki-rusvet-agi-sorusturmasinda-supheliler-adliyede-baskan-tozan-ve-esi-ne-anlatacak
+          - generic: KARI KOCA İRTİKAP!
+        - link "Eşme Belediyesi’ndeki rüşvet ağı soruşturmasında şüpheliler adliyede | Başkan Tozan ve eşi ne anlatacak?" [ref=e500] [cursor=pointer]:
+          - /url: https://www.takvim.com.tr/guncel/2026/04/20/esme-belediyesindeki-rusvet-agi-sorusturmasinda-supheliler-adliyede-baskan-tozan-ve-esi-ne-anlatacak
+          - generic [ref=e501]: Eşme rüşvetçileri adliyede
+      - 'figure "Okul saldırıları sonrası sosyal medyadan tehdit: 25 şüpheli hakkında gözaltı kararı verildi" [ref=e503]':
+        - 'link "Okul saldırıları sonrası sosyal medyadan tehdit: 25 şüpheli hakkında gözaltı kararı verildi" [ref=e504] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/guncel/2026/04/20/okul-saldirilari-sonrasi-sosyal-medyadan-tehdit-25-supheli-hakkinda-gozalti-karari-verildi
+          - generic: OKUL SALDIRILARI SONRASI SOSYAL MEDYA ÇETELERİNE GEÇİT YOK
+        - 'link "Okul saldırıları sonrası sosyal medyadan tehdit: 25 şüpheli hakkında gözaltı kararı verildi" [ref=e506] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/guncel/2026/04/20/okul-saldirilari-sonrasi-sosyal-medyadan-tehdit-25-supheli-hakkinda-gozalti-karari-verildi
+          - generic [ref=e507]: 25 şüpheli hakkında gözaltı kararı verildi
+      - 'figure "Dijital oyun lobisinden hedef saptırma operasyonu: Zehri aklama timi sahada! | Kim bu eline kan bulaşan PR ajansları?" [ref=e509]':
+        - 'link "Dijital oyun lobisinden hedef saptırma operasyonu: Zehri aklama timi sahada! | Kim bu eline kan bulaşan PR ajansları?" [ref=e510] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/guncel/2026/04/19/dijital-oyun-lobisinden-hedef-saptirma-operasyonu-zehri-aklama-timi-sahada
+        - 'link "Dijital oyun lobisinden hedef saptırma operasyonu: Zehri aklama timi sahada! | Kim bu eline kan bulaşan PR ajansları?" [ref=e512] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/guncel/2026/04/19/dijital-oyun-lobisinden-hedef-saptirma-operasyonu-zehri-aklama-timi-sahada
+          - generic [ref=e513]: Geleneksel medyaya kanlı klavye oparasyonu
+      - 'figure "Bakan Fidan ADF Youth''ta konuştu: Geleceğin diplomatlarıyla buluştu" [ref=e515]':
+        - 'link "Bakan Fidan ADF Youth''ta konuştu: Geleceğin diplomatlarıyla buluştu" [ref=e516] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/guncel/2026/04/19/bakan-fidan-adf-youthta-konustu
+          - generic: BAKAN FİDAN ADF YOUTH'TA KONUŞTU
+        - 'link "Bakan Fidan ADF Youth''ta konuştu: Geleceğin diplomatlarıyla buluştu" [ref=e518] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/guncel/2026/04/19/bakan-fidan-adf-youthta-konustu
+          - generic [ref=e519]: Geleceğin diplomatlarıyla buluştu
+      - 'figure "Sağlıkta biyoteknoloji hamlesi: Başkan Erdoğan''a Türkiye’nin ilk yerli CAR-T Merkezi tanıtıldı" [ref=e521]':
+        - 'link "Sağlıkta biyoteknoloji hamlesi: Başkan Erdoğan''a Türkiye’nin ilk yerli CAR-T Merkezi tanıtıldı" [ref=e522] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/guncel/2026/04/19/saglikta-biyoteknoloji-hamlesi-baskan-erdogana-turkiyenin-ilk-yerli-car-t-merkezi-tanitildi
+          - generic: TÜRKİYE'DE İLK
+        - 'link "Sağlıkta biyoteknoloji hamlesi: Başkan Erdoğan''a Türkiye’nin ilk yerli CAR-T Merkezi tanıtıldı" [ref=e524] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/guncel/2026/04/19/saglikta-biyoteknoloji-hamlesi-baskan-erdogana-turkiyenin-ilk-yerli-car-t-merkezi-tanitildi
+          - generic [ref=e525]: Başkan Erdoğan'a CAR-T Merkezi tanıtıldı
+      - figure "Zirvede harakiri! Trabzonspor Başakşehir ile 1-1 berabere kaldı" [ref=e527]:
+        - link "Zirvede harakiri! Trabzonspor Başakşehir ile 1-1 berabere kaldı" [ref=e528] [cursor=pointer]:
+          - /url: https://www.takvim.com.tr/trabzonspor/2026/04/19/zirvede-harakiri-trabzonspor-basaksehir-ile-1-1-berabere-kaldi
+        - link "Zirvede harakiri! Trabzonspor Başakşehir ile 1-1 berabere kaldı" [ref=e530] [cursor=pointer]:
+          - /url: https://www.takvim.com.tr/trabzonspor/2026/04/19/zirvede-harakiri-trabzonspor-basaksehir-ile-1-1-berabere-kaldi
+          - generic [ref=e531]: Zirvede harakiri!
+      - 'figure "Koruma polisi Şükrü Eroğlu konuştu: SIM kartını valinin talimatıyla gönderdim! Eroğlu''nun ifadesindeki çelişkiler dikkat çekti" [ref=e533]':
+        - 'link "Koruma polisi Şükrü Eroğlu konuştu: SIM kartını valinin talimatıyla gönderdim! Eroğlu''nun ifadesindeki çelişkiler dikkat çekti" [ref=e534] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/guncel/2026/04/19/sukru-eroglu-konustu-sim-kartini-valinin-talimatiyla-gonderdim
+          - generic: SIM KARTINI VALİNİN TALİMATIYLA GÖNDERDİM
+        - 'link "Koruma polisi Şükrü Eroğlu konuştu: SIM kartını valinin talimatıyla gönderdim! Eroğlu''nun ifadesindeki çelişkiler dikkat çekti" [ref=e536] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/guncel/2026/04/19/sukru-eroglu-konustu-sim-kartini-valinin-talimatiyla-gonderdim
+          - generic [ref=e537]: Koruma polisi Şükrü Eroğlu konuştu
+    - generic [ref=e541]:
+      - generic [ref=e542]:
+        - group "1 / 6" [ref=e543]:
+          - link "Yalaka zorda" [ref=e544] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/yazarlar/bekir-hazar/yalaka-zorda-6413660
+            - img "Yalaka zorda" [ref=e545]
+          - generic [ref=e546]:
+            - heading "BEKİR HAZAR" [level=3] [ref=e547]:
+              - link "BEKİR HAZAR" [ref=e548] [cursor=pointer]:
+                - /url: https://www.takvim.com.tr/yazarlar/bekir-hazar/yalaka-zorda-6413660
+            - link "Yalaka zorda" [ref=e549] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/yazarlar/bekir-hazar/yalaka-zorda-6413660
+        - group "2 / 6" [ref=e550]:
+          - link "Deja Vu" [ref=e551] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/yazarlar/ulas-ozdemir/2026/04/20/deja-vu
+            - img "Deja Vu" [ref=e552]
+          - generic [ref=e553]:
+            - heading "ULAŞ ÖZDEMİR" [level=3] [ref=e554]:
+              - link "ULAŞ ÖZDEMİR" [ref=e555] [cursor=pointer]:
+                - /url: https://www.takvim.com.tr/yazarlar/ulas-ozdemir/2026/04/20/deja-vu
+            - link "Deja Vu" [ref=e556] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/yazarlar/ulas-ozdemir/2026/04/20/deja-vu
+        - group "3 / 6" [ref=e557]:
+          - link "Hep aynı hikaye" [ref=e558] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/yazarlar/kartal-yigit/2026/04/20/hep-ayni-hikaye
+            - img "Hep aynı hikaye" [ref=e559]
+          - generic [ref=e560]:
+            - heading "KARTAL YİĞİT" [level=3] [ref=e561]:
+              - link "KARTAL YİĞİT" [ref=e562] [cursor=pointer]:
+                - /url: https://www.takvim.com.tr/yazarlar/kartal-yigit/2026/04/20/hep-ayni-hikaye
+            - link "Hep aynı hikaye" [ref=e563] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/yazarlar/kartal-yigit/2026/04/20/hep-ayni-hikaye
+        - group "4 / 6" [ref=e564]:
+          - link "Zamanlar yarıştılar" [ref=e565] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/yazarlar/ufuk-ozcan/2026/04/20/zamanlar-yaristilar
+            - img "Zamanlar yarıştılar" [ref=e566]
+          - generic [ref=e567]:
+            - heading "UFUK ÖZCAN" [level=3] [ref=e568]:
+              - link "UFUK ÖZCAN" [ref=e569] [cursor=pointer]:
+                - /url: https://www.takvim.com.tr/yazarlar/ufuk-ozcan/2026/04/20/zamanlar-yaristilar
+            - link "Zamanlar yarıştılar" [ref=e570] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/yazarlar/ufuk-ozcan/2026/04/20/zamanlar-yaristilar
+        - group "5 / 6" [ref=e571]:
+          - link "Kızartmayı bırak" [ref=e572] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/yazarlar/nafiz-karagozoglu/kizartmayi-birak-6413663
+            - img "Kızartmayı bırak" [ref=e573]
+          - generic [ref=e574]:
+            - heading "DR. NAFİZ KARAGÖZOĞLU" [level=3] [ref=e575]:
+              - link "DR. NAFİZ KARAGÖZOĞLU" [ref=e576] [cursor=pointer]:
+                - /url: https://www.takvim.com.tr/yazarlar/nafiz-karagozoglu/kizartmayi-birak-6413663
+            - link "Kızartmayı bırak" [ref=e577] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/yazarlar/nafiz-karagozoglu/kizartmayi-birak-6413663
+        - group "6 / 6" [ref=e578]:
+          - link "Kısıtlama olimpiyatları şampiyonları" [ref=e579] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/yazarlar/lutfi-albayrak/kisitlama-olimpiyatlari-sampiyonlari-6413658
+            - img "Kısıtlama olimpiyatları şampiyonları" [ref=e580]
+          - generic [ref=e581]:
+            - heading "LÜTFİ ALBAYRAK" [level=3] [ref=e582]:
+              - link "LÜTFİ ALBAYRAK" [ref=e583] [cursor=pointer]:
+                - /url: https://www.takvim.com.tr/yazarlar/lutfi-albayrak/kisitlama-olimpiyatlari-sampiyonlari-6413658
+            - link "Kısıtlama olimpiyatları şampiyonları" [ref=e584] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/yazarlar/lutfi-albayrak/kisitlama-olimpiyatlari-sampiyonlari-6413658
+      - button "Previous slide" [ref=e585] [cursor=pointer]:
+        - img [ref=e586]
+      - button "Next slide" [ref=e588] [cursor=pointer]:
+        - img [ref=e589]
+    - generic [ref=e594]:
+      - heading "HABERLER" [level=3] [ref=e595]:
+        - img [ref=e596]
+        - generic [ref=e598]: HABERLER
+      - generic [ref=e599]:
+        - generic [ref=e602]:
+          - link "Bu ne hal Kartal! Beşiktaş Samsunspor’a 2-1 yenildi" [ref=e603] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/besiktas/2026/04/19/bu-ne-hal-kartal-besiktas-samsunspora-2-1-yenildi
+            - generic [ref=e605]: Kartal Samsun'da mağlup
+          - link "Galatasaray’a Japon harikası! Yeni transfer Premier Lig’den" [ref=e606] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/galatasaray/2026/04/19/galatasaraya-japon-harikasi-yeni-transfer-premier-ligden
+            - generic [ref=e608]: Galatasaray'a Japon harikası!
+          - link "Sultanlar Ligi’nde şampiyon Vakıfbank! Fenerbahçe Medicana’yı 3-2 yenip kupaya uzandı" [ref=e609] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/spor/2026/04/19/sultanlar-liginde-sampiyon-vakifbank-fenerbahce-medicanayi-3-2-yenip-kupaya-uzandi
+            - generic [ref=e611]: Sultanlar Ligi'nde şampiyon Vakıfbank!
+          - link "Galatasaray yeni stoperini buldu! Abdülkerim’in yerine gelecek flaş transfer" [ref=e612] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/galatasaray/2026/04/19/galatasaray-yeni-stoperini-buldu-abdulkerimin-yerine-gelecek-flas-transfer
+            - generic [ref=e614]: Galatasaray'a yeni stoper
+          - link "Erzurumspor FK Süper Lig’de! Bodrum’daki 1-1’lik beraberlik yetti" [ref=e615] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/spor/2026/04/19/erzurumspor-fk-super-ligde-bodrumdaki-1-1lik-beraberlik-yetti
+            - generic [ref=e617]: Erzurumspor FK Süper Lig'de
+          - link "Gülistan Doku soruşturmasında eski Vali Tuncay Sonel’in oğlu tutuklandı | Katil sloganlarıyla linç girişimi" [ref=e618] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/guncel/2026/04/18/gulistan-dokunun-sorusturmasinda-13-supheliden-4u-adliyeye-sevk-edildi
+            - generic [ref=e620]: Gülistan'a kıyanlara "Doku"nuluyor
+        - generic [ref=e622]:
+          - generic [ref=e624]:
+            - figure "Kahramanmaraş İl Milli Eğitim Müdürü Erhan Baydur görevden alındı" [ref=e626]:
+              - link "Kahramanmaraş İl Milli Eğitim Müdürü Erhan Baydur görevden alındı" [ref=e627] [cursor=pointer]:
+                - /url: https://www.takvim.com.tr/guncel/2026/04/19/kahramanmaras-il-milli-egitim-muduru-erhan-baydur-gorevden-alindi
+              - link "Kahramanmaraş İl Milli Eğitim Müdürü Erhan Baydur görevden alındı" [ref=e630] [cursor=pointer]:
+                - /url: https://www.takvim.com.tr/guncel/2026/04/19/kahramanmaras-il-milli-egitim-muduru-erhan-baydur-gorevden-alindi
+                - generic [ref=e631]: Kahramanmaraş İl Milli Eğitim Müdürü görevden alındı
+            - 'figure "Diplomasinin kalbi Antalya''da attı! Bakan Fidan''dan İsrail-Yunanistan-GKRY ittifakına karşı net mesaj: Türkiye kendini korur" [ref=e633]':
+              - 'link "Diplomasinin kalbi Antalya''da attı! Bakan Fidan''dan İsrail-Yunanistan-GKRY ittifakına karşı net mesaj: Türkiye kendini korur" [ref=e634] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/guncel/2026/04/19/antalya-diplomasi-forumu-hakan-fidan-gazze
+              - 'link "Diplomasinin kalbi Antalya''da attı! Bakan Fidan''dan İsrail-Yunanistan-GKRY ittifakına karşı net mesaj: Türkiye kendini korur" [ref=e636] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/guncel/2026/04/19/antalya-diplomasi-forumu-hakan-fidan-gazze
+                - generic [ref=e637]: Türkiye kendini korur!
+          - generic [ref=e639]:
+            - 'figure "Antalya Diplomasi Forumu’nda stratejik temas: Başkan Erdoğan liderlerle görüştü | Konuşması 3 dilde kitaplaştırıldı" [ref=e641]':
+              - 'link "Antalya Diplomasi Forumu’nda stratejik temas: Başkan Erdoğan liderlerle görüştü | Konuşması 3 dilde kitaplaştırıldı" [ref=e642] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/guncel/canli/canli-antalya-diplomasi-forumunda-stratejik-temas-baskan-erdogan-liderlerle-gorustu
+              - 'link "Antalya Diplomasi Forumu’nda stratejik temas: Başkan Erdoğan liderlerle görüştü | Konuşması 3 dilde kitaplaştırıldı" [ref=e644] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/guncel/canli/canli-antalya-diplomasi-forumunda-stratejik-temas-baskan-erdogan-liderlerle-gorustu
+                - generic [ref=e645]: Diplomasi Forumu’nda stratejik temas
+            - figure "Balıkesir’de CHP’li Erden Köybaşı'nın gelinine iş oğluna ballı ihale" [ref=e647]:
+              - link "Balıkesir’de CHP’li Erden Köybaşı'nın gelinine iş oğluna ballı ihale" [ref=e648] [cursor=pointer]:
+                - /url: https://www.takvim.com.tr/guncel/2026/04/19/balikesirde-chpli-erden-kcybasinin-gelinine-is-ogluna-balli-ihale
+              - link "Balıkesir’de CHP’li Erden Köybaşı'nın gelinine iş oğluna ballı ihale" [ref=e651] [cursor=pointer]:
+                - /url: https://www.takvim.com.tr/guncel/2026/04/19/balikesirde-chpli-erden-kcybasinin-gelinine-is-ogluna-balli-ihale
+                - generic [ref=e652]: CHP’li başkanın gelinine iş oğluna ballı ihale
+          - generic [ref=e654]:
+            - 'figure "Schengen’de \"EES\" devri: Yanlış ülkeden giriş yapana vize reddi kapıda" [ref=e656]':
+              - 'link "Schengen’de \"EES\" devri: Yanlış ülkeden giriş yapana vize reddi kapıda" [ref=e657] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/ekonomi/2026/04/19/schengende-ees-devri-yanlis-ulkeden-giris-yapana-vize-reddi-kapida
+              - 'link "Schengen’de \"EES\" devri: Yanlış ülkeden giriş yapana vize reddi kapıda" [ref=e660] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/ekonomi/2026/04/19/schengende-ees-devri-yanlis-ulkeden-giris-yapana-vize-reddi-kapida
+                - generic [ref=e661]: Avrupa vizeyi sıkı takibe aldı
+            - 'figure "Gülistan Doku cinayetinde adaleti kirleten yapı | Soruşturmada \"Terörsüz Türkiye\" detayı: Faili meçhullerin aydınlatılması sürecin parçası" [ref=e663]':
+              - 'link "Gülistan Doku cinayetinde adaleti kirleten yapı | Soruşturmada \"Terörsüz Türkiye\" detayı: Faili meçhullerin aydınlatılması sürecin parçası" [ref=e664] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/guncel/2026/04/19/gulistan-doku-cinayetinde-adaleti-kirleten-yapi-sorusturmada-terorsuz-turkiye-detayi
+              - 'link "Gülistan Doku cinayetinde adaleti kirleten yapı | Soruşturmada \"Terörsüz Türkiye\" detayı: Faili meçhullerin aydınlatılması sürecin parçası" [ref=e666] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/guncel/2026/04/19/gulistan-doku-cinayetinde-adaleti-kirleten-yapi-sorusturmada-terorsuz-turkiye-detayi
+                - generic [ref=e667]: Adaleti kirleten Son"eller"
+        - generic [ref=e669]:
+          - generic [ref=e671]:
+            - 'figure "Milyonlara %12.86 memur zammı hesabı: 13 kaleme artış geliyor! Evde bakım, SED, ikramiye..." [ref=e673]':
+              - 'link "Milyonlara %12.86 memur zammı hesabı: 13 kaleme artış geliyor! Evde bakım, SED, ikramiye..." [ref=e674] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/ekonomi/2026/04/19/milyonlara-yuzde-1286-memur-zammi-hesabi
+              - 'link "Milyonlara %12.86 memur zammı hesabı: 13 kaleme artış geliyor! Evde bakım, SED, ikramiye..." [ref=e677] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/ekonomi/2026/04/19/milyonlara-yuzde-1286-memur-zammi-hesabi
+                - generic [ref=e678]: Memur maaşları ile neler değişecek?
+            - 'figure "Aziz Yıldırım Divan''a damga vurdu: Fenerbahçe çürümüşlük içindedir | Yaşlı forvet almayın" [ref=e680]':
+              - 'link "Aziz Yıldırım Divan''a damga vurdu: Fenerbahçe çürümüşlük içindedir | Yaşlı forvet almayın" [ref=e681] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/spor/2026/04/18/aziz-yildirim-divana-damga-vurdu-fenerbahce-curumusluk-icindedir-yasli-forvet-almayin
+              - 'link "Aziz Yıldırım Divan''a damga vurdu: Fenerbahçe çürümüşlük içindedir | Yaşlı forvet almayın" [ref=e683] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/spor/2026/04/18/aziz-yildirim-divana-damga-vurdu-fenerbahce-curumusluk-icindedir-yasli-forvet-almayin
+                - generic [ref=e684]: "\"Fenerbahçe çürümüşlük içindedir\""
+          - generic [ref=e686]:
+            - 'figure "İhale vurgununa \"dur\" dendi! CHP''li ABB''ye soruşturma izni: 40 milyonluk kamu zararı var" [ref=e688]':
+              - 'link "İhale vurgununa \"dur\" dendi! CHP''li ABB''ye soruşturma izni: 40 milyonluk kamu zararı var" [ref=e689] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/guncel/2026/04/19/ihale-vurgununa-dur-dendi-chpli-abbye-sorusturma-izni-40-milyonluk-kamu-zarari-var
+              - 'link "İhale vurgununa \"dur\" dendi! CHP''li ABB''ye soruşturma izni: 40 milyonluk kamu zararı var" [ref=e691] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/guncel/2026/04/19/ihale-vurgununa-dur-dendi-chpli-abbye-sorusturma-izni-40-milyonluk-kamu-zarari-var
+                - generic [ref=e692]: 40 milyonluk kamu zararına soruşturma
+            - 'figure "Kahramanmaraş okul katliamında kan donduran detay: Caninin 11 Nisan manifestosu ortaya çıktı!" [ref=e694]':
+              - 'link "Kahramanmaraş okul katliamında kan donduran detay: Caninin 11 Nisan manifestosu ortaya çıktı!" [ref=e695] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/guncel/2026/04/18/kahramanmaras-okul-katliaminda-kan-donduran-detay-caninin-11-nisan-manifestosu-ortaya-cikti
+              - 'link "Kahramanmaraş okul katliamında kan donduran detay: Caninin 11 Nisan manifestosu ortaya çıktı!" [ref=e698] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/guncel/2026/04/18/kahramanmaras-okul-katliaminda-kan-donduran-detay-caninin-11-nisan-manifestosu-ortaya-cikti
+                - generic [ref=e699]: Okul katliamında kan donduran detay
+          - generic [ref=e701]:
+            - 'figure "CHP''li İzmir BB Başkanı Cemil Tugay''ın \"Uzundere\" ayıbı! Hakkını arayana \"provokatör\" dedi: AK Parti''den sert tepki" [ref=e703]':
+              - 'link "CHP''li İzmir BB Başkanı Cemil Tugay''ın \"Uzundere\" ayıbı! Hakkını arayana \"provokatör\" dedi: AK Parti''den sert tepki" [ref=e704] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/guncel/2026/04/19/chpli-cemil-tugay-uzunderede-hakkini-arayana-provokator-dedi
+              - 'link "CHP''li İzmir BB Başkanı Cemil Tugay''ın \"Uzundere\" ayıbı! Hakkını arayana \"provokatör\" dedi: AK Parti''den sert tepki" [ref=e707] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/guncel/2026/04/19/chpli-cemil-tugay-uzunderede-hakkini-arayana-provokator-dedi
+                - generic [ref=e708]: Hakkını arayana provokatör dedi
+            - figure "2. Lig'de şampiyon Bursaspor ve Batman Petrolspor! 5 yıl sonra 1. Lig'e geri döndü!" [ref=e710]:
+              - link "2. Lig'de şampiyon Bursaspor ve Batman Petrolspor! 5 yıl sonra 1. Lig'e geri döndü!" [ref=e711] [cursor=pointer]:
+                - /url: https://www.takvim.com.tr/spor/2026/04/19/2-ligde-sampiyon-bursaspor-yillar-sonra-1-lige-geri-dondu
+              - link "2. Lig'de şampiyon Bursaspor ve Batman Petrolspor! 5 yıl sonra 1. Lig'e geri döndü!" [ref=e713] [cursor=pointer]:
+                - /url: https://www.takvim.com.tr/spor/2026/04/19/2-ligde-sampiyon-bursaspor-yillar-sonra-1-lige-geri-dondu
+                - generic [ref=e714]: 2. Lig'de şampiyon Bursaspor ve Petrolspor
+        - generic [ref=e717]:
+          - 'link "Restoranlarda Qr menü oyunu: Düşük fiyatı ödeyin fazlasını vermeyin" [ref=e718] [cursor=pointer]':
+            - /url: https://www.takvim.com.tr/ekonomi/2026/04/19/restoranlarda-qr-menu-oyunu-dusuk-fiyati-odeyin-fazlasini-vermeyin
+            - 'img "Restoranlarda Qr menü oyunu: Düşük fiyatı ödeyin fazlasını vermeyin" [ref=e720]'
+            - generic [ref=e721]: Menüde oyun var
+          - link "Yargıda karara bağlanan dosya sayısı açılanları geride bıraktı | Bakan Gürlek verileri açıkladı" [ref=e722] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/guncel/2026/04/19/yargida-karara-baglanan-dosya-sayisi-acilanlari-geride-birakti-bakan-gurlek-verileri-acikladi
+            - img "Yargıda karara bağlanan dosya sayısı açılanları geride bıraktı | Bakan Gürlek verileri açıkladı" [ref=e724]
+            - generic [ref=e725]: Yargı kararlarında kritik eşik aşıldı
+          - link "Kasımpaşa’ya altın değerinde 3 puan! Alanyaspor’u korner golüyle yıktı" [ref=e726] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/superlig/2026/04/19/kasimpasaya-altin-degerinde-3-puan-alanyasporu-korner-goluyle-yikti
+            - img "Kasımpaşa’ya altın değerinde 3 puan! Alanyaspor’u korner golüyle yıktı" [ref=e728]
+            - generic [ref=e729]: İstanbul'da tek gol
+          - link "Galatasaray’a Kenan Yıldız şoku! Bernardo Silva transferi suya düşebilir" [ref=e730] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/galatasaray/2026/04/18/galatasaraya-kenan-yildiz-soku-bernardo-silva-transferi-suya-dusebilir
+            - img "Galatasaray’a Kenan Yıldız şoku! Bernardo Silva transferi suya düşebilir" [ref=e732]
+            - generic [ref=e733]: Cimbom'a Silva'dan kötü haber
+          - 'link "İsrail askerlerinden kan donduran itiraflar | Gazze’deki vahşeti anlattılar: Çaldık, öldürdük, gömdük" [ref=e734] [cursor=pointer]':
+            - /url: https://www.takvim.com.tr/dunya/israil-askerlerinden-kan-donduran-itiraflar-gazzedeki-vahseti-anlattilar-caldik-oldurduk-gomduk-6413547
+            - 'img "İsrail askerlerinden kan donduran itiraflar | Gazze’deki vahşeti anlattılar: Çaldık, öldürdük, gömdük" [ref=e736]'
+            - generic [ref=e737]: İsrail askerlerinden kan donduran itiraflar
+          - link "Emine Erdoğan himayesindeki Sıfır Atık Projesi’ne Yeşil Dünya Şampiyonluğu ödülü" [ref=e738] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/guncel/2026/04/19/emine-erdogan-himayesindeki-sifir-atik-projesine-yesil-dunya-sampiyonlugu-odulu
+            - img "Emine Erdoğan himayesindeki Sıfır Atık Projesi’ne Yeşil Dünya Şampiyonluğu ödülü" [ref=e740]
+            - generic [ref=e741]: Sıfır Atık Projesi'ne bir ödül daha
+    - generic [ref=e742]:
+      - heading "PİYASA" [level=3] [ref=e743]:
+        - img [ref=e744]
+        - generic [ref=e746]: PİYASA
+      - generic [ref=e747]:
+        - generic [ref=e749]:
+          - generic [ref=e751]:
+            - 'figure "Önce maaş sonra tapu! 40 bin genç için teknolojik çiftlik fırsatı: Mezuniyet şartı yok" [ref=e753]':
+              - 'link "Önce maaş sonra tapu! 40 bin genç için teknolojik çiftlik fırsatı: Mezuniyet şartı yok" [ref=e754] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/galeri/ekonomi/hem-maas-hem-hibe-tapu-40-bin-gence-3-asgari-ucretli-ciftlik-mujdesi
+              - 'link "Önce maaş sonra tapu! 40 bin genç için teknolojik çiftlik fırsatı: Mezuniyet şartı yok" [ref=e756] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/galeri/ekonomi/hem-maas-hem-hibe-tapu-40-bin-gence-3-asgari-ucretli-ciftlik-mujdesi
+                - generic [ref=e757]: 40 bin teknolojik çiftlik kurulacak!
+            - 'figure "Otomotivde elektrikli çağ: Martta rekor seviyede satış! Türkiye’de pay yüzde 51’i aştı" [ref=e759]':
+              - 'link "Otomotivde elektrikli çağ: Martta rekor seviyede satış! Türkiye’de pay yüzde 51’i aştı" [ref=e760] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/galeri/ekonomi/otomotivde-elektrikli-cag-martta-rekor-seviyede-satis-turkiyede-pay-yuzde-51i-asti
+              - 'link "Otomotivde elektrikli çağ: Martta rekor seviyede satış! Türkiye’de pay yüzde 51’i aştı" [ref=e763] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/galeri/ekonomi/otomotivde-elektrikli-cag-martta-rekor-seviyede-satis-turkiyede-pay-yuzde-51i-asti
+                - generic [ref=e764]: "Otomotivde elektrikli çağ: Martta rekor seviyede satış! Türkiye’de pay yüzde 51’i aştı"
+          - generic [ref=e766]:
+            - 'figure "Emekli temmuz zammında 2''li formül: SSK ve Bağ-Kur''luya yüzde 16 artışla 23.200 TL kök maaş hesabı" [ref=e768]':
+              - 'link "Emekli temmuz zammında 2''li formül: SSK ve Bağ-Kur''luya yüzde 16 artışla 23.200 TL kök maaş hesabı" [ref=e769] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/galeri/ekonomi/emekli-temmuz-zamminda-2li-formul-ssk-ve-bagkurluya-yuzde-16-artis-hesabi
+              - 'link "Emekli temmuz zammında 2''li formül: SSK ve Bağ-Kur''luya yüzde 16 artışla 23.200 TL kök maaş hesabı" [ref=e772] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/galeri/ekonomi/emekli-temmuz-zamminda-2li-formul-ssk-ve-bagkurluya-yuzde-16-artis-hesabi
+                - generic [ref=e773]: Emekli zammında 2 formül!
+            - 'figure "2026 vekaletle kurban kesim bedelleri açıklandı: Yurt içi ve yurt dışı ücreti ne kadar?" [ref=e775]':
+              - 'link "2026 vekaletle kurban kesim bedelleri açıklandı: Yurt içi ve yurt dışı ücreti ne kadar?" [ref=e776] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/ekonomi/2026/04/20/2026-vekaletle-kurban-kesim-bedelleri-aciklandi
+              - 'link "2026 vekaletle kurban kesim bedelleri açıklandı: Yurt içi ve yurt dışı ücreti ne kadar?" [ref=e778] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/ekonomi/2026/04/20/2026-vekaletle-kurban-kesim-bedelleri-aciklandi
+                - generic [ref=e779]: Vekaletle kurban kesim bedelleri açıklandı
+          - generic [ref=e781]:
+            - figure "YÖK 35 sözleşmeli personel alacak! Hangi kadrolar açıldı, şartlar neler?" [ref=e783]:
+              - link "YÖK 35 sözleşmeli personel alacak! Hangi kadrolar açıldı, şartlar neler?" [ref=e784] [cursor=pointer]:
+                - /url: https://www.takvim.com.tr/memur/2026/04/20/yok-35-sozlesmeli-personel-alacak
+              - link "YÖK 35 sözleşmeli personel alacak! Hangi kadrolar açıldı, şartlar neler?" [ref=e786] [cursor=pointer]:
+                - /url: https://www.takvim.com.tr/memur/2026/04/20/yok-35-sozlesmeli-personel-alacak
+                - generic [ref=e787]: YÖK sözleşmeli personel alacak
+            - 'figure "Sanayide yerel kalkınma dönemi: 11 il için özel teşvik paketi devrede" [ref=e789]':
+              - 'link "Sanayide yerel kalkınma dönemi: 11 il için özel teşvik paketi devrede" [ref=e790] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/ekonomi/2026/04/20/sanayide-yerel-kalkinma-donemi-11-il-icin-ozel-tesvik-paketi-devrede
+              - 'link "Sanayide yerel kalkınma dönemi: 11 il için özel teşvik paketi devrede" [ref=e793] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/ekonomi/2026/04/20/sanayide-yerel-kalkinma-donemi-11-il-icin-ozel-tesvik-paketi-devrede
+                - generic [ref=e794]: Deprem bölgesi yatırım üssü olacak
+        - generic [ref=e796]:
+          - generic [ref=e798]: KAÇIRMAYIN
+          - generic [ref=e799]:
+            - 'link "Maaş istemiyor yemek yemiyor: Nüfusa kayıtlı robot ’bismillah’ dedi mesaiye başladı" [ref=e800] [cursor=pointer]':
+              - /url: https://www.takvim.com.tr/haberler/2026/04/18/maas-istemiyor-yemek-yemiyor-nufusa-kayitli-robot-bismillah-dedi-mesaiye-basladi
+              - generic [ref=e802]: Nüfusa kayıtlı robot mesaiye başladı
+            - 'link "Yüzyıllık bilmece yanıtlandı: Shakespeare’in kayıp evi nihayet bulundu" [ref=e803] [cursor=pointer]':
+              - /url: https://www.takvim.com.tr/galeri/dunya/yuzyillik-bilmece-yanitlandi-shakespearein-kayip-evi-nihayet-bulundu
+              - generic [ref=e805]: Shakespeare’in kayıp evi bulundu
+            - 'link "Zaman kapsülü açıldı: Dev kazıda 100 bin yıllık insan kemikleri bulundu" [ref=e806] [cursor=pointer]':
+              - /url: https://www.takvim.com.tr/dunya/zaman-kapsulu-acildi-dev-kazida-100-bin-yillik-insan-kemikleri-bulundu-6411366
+              - generic [ref=e808]: 100 bin yıllık insan kemikleri bulundu
+            - link "Benzine ve motorine indirim var mı? 18 Nisan 2026 İzmir, İstanbul, Ankara akaryakıt fiyatları..." [ref=e809] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/haberler/2026/04/18/motorine-indirim-geldi-tabela-degisti-16-nisan-2026-izmir-istanbul-ankara-akaryakit-fiyatlari
+              - generic [ref=e811]: Akaryakıtta son durum!
+            - 'link "Uyurken beyniniz kendini yıkıyor: Bilim insanları süreci ilk kez gözlemledi" [ref=e812] [cursor=pointer]':
+              - /url: https://www.takvim.com.tr/galeri/yasam/uyurken-beyniniz-kendini-yikiyor-bilim-insanlari-sureci-ilk-kez-gozlemledi
+              - generic [ref=e814]: Uyurken beyniniz kendini yıkıyor
+            - 'link "Sadece sizi değil çocuklarınızı da hasta ediyor: Bu besinleri tüketmek DNA’ya işliyor" [ref=e815] [cursor=pointer]':
+              - /url: https://www.takvim.com.tr/saglik/sadece-sizi-degil-cocuklarinizi-da-hasta-ediyor-bu-besinleri-tuketmek-dnaya-isliyor-6410805
+              - generic [ref=e817]: Zararı nesiller boyu silinmiyor
+    - generic [ref=e818]:
+      - heading "SPOR" [level=3] [ref=e819]:
+        - img [ref=e820]
+        - generic [ref=e822]: SPOR
+      - generic [ref=e823]:
+        - figure "Fenerbahçe'den stopere çifte takviye! Galatasaray'a kötü haber" [ref=e831]:
+          - link "Fenerbahçe'den stopere çifte takviye! Galatasaray'a kötü haber" [ref=e832] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/fenerbahce/2026/04/20/fenerbahceden-stopere-cifte-takviye-galatasaraya-kotu-haber
+          - link "Fenerbahçe'den stopere çifte takviye! Galatasaray'a kötü haber" [ref=e834] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/fenerbahce/2026/04/20/fenerbahceden-stopere-cifte-takviye-galatasaraya-kotu-haber
+            - generic [ref=e835]: Fenerbahçe'den stopere çifte takviye! Galatasaray'a kötü haber
+        - generic [ref=e837]:
+          - figure "Osimhen için kupada derbi provası! Önce 20 dakika sonra ilk 11" [ref=e839]:
+            - link "Osimhen için kupada derbi provası! Önce 20 dakika sonra ilk 11" [ref=e840] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/galatasaray/2026/04/20/osimhen-icin-kupada-derbi-provasi-once-20-dakika-sonra-ilk-11
+            - link "Osimhen için kupada derbi provası! Önce 20 dakika sonra ilk 11" [ref=e842] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/galatasaray/2026/04/20/osimhen-icin-kupada-derbi-provasi-once-20-dakika-sonra-ilk-11
+              - generic [ref=e843]: Osimhen için kupada derbi provası!
+          - generic [ref=e845]:
+            - generic [ref=e846]: ÖNE ÇIKANLAR
+            - generic [ref=e847]:
+              - 'link "Galatasaray’ın aklı 10’da: Bernardo Silva! Avrupa’dan dev rakip" [ref=e848] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/galatasaray/2026/04/20/galatasarayin-akli-10da-bernardo-silva-avrupadan-dev-rakip
+                - generic [ref=e850]:
+                  - generic [ref=e851]: Galatasaray'ın aklı 10'da! Avrupa'dan dev rakip
+                  - time [ref=e852]: 20 Nisan 2026 Pazartesi
+              - link "Fenerbahçe’nin Konya kafilesi belli oldu! Derbi öncesi 3 eksik" [ref=e853] [cursor=pointer]:
+                - /url: https://www.takvim.com.tr/turkiye-kupa/2026/04/20/fenerbahcenin-konya-kafilesi-belli-oldu-derbi-oncesi-2-eksik
+                - generic [ref=e855]:
+                  - generic [ref=e856]: F.Bahçe'nin Konya kafilesi belli oldu!
+                  - time [ref=e857]: 20 Nisan 2026 Pazartesi
+              - link "ZTK’da Konyaspor - Fenerbahçe maçını Ozan Ergün yönetecek" [ref=e858] [cursor=pointer]:
+                - /url: https://www.takvim.com.tr/turkiye-kupa/2026/04/20/ztkda-konyaspor-fenerbahce-macini-ozan-ergun-yonetecek
+                - generic [ref=e860]:
+                  - generic [ref=e861]: Fenerbahçe maçının hakemi belli oldu!
+                  - time [ref=e862]: 20 Nisan 2026 Pazartesi
+        - generic [ref=e864]:
+          - generic [ref=e868]:
+            - generic [ref=e869] [cursor=pointer]: PUAN DURUMU
+            - generic [ref=e870] [cursor=pointer]: CANLI SKOR
+            - generic [ref=e871] [cursor=pointer]: FİKSTÜR
+            - generic [ref=e872]:
+              - generic [ref=e873]:
+                - img [ref=e874]
+                - combobox [ref=e878] [cursor=pointer]:
+                  - option "Süper Lig" [selected]
+                  - option "1. Lig"
+                  - option "Premier Lig"
+                  - option "LaLiga"
+                  - option "Bundesliga"
+                  - option "Serie A"
+                  - option "Ligue 1"
+              - link "Detaylı Puan Durumu" [ref=e881] [cursor=pointer]:
+                - /url: "javascript:"
+                - text: Detaylı Puan Durumu
+          - figure "Türkiye Kupası'nda çeyrek final heyecanı! İşte maç programı ve kanallar" [ref=e883]:
+            - link "Türkiye Kupası'nda çeyrek final heyecanı! İşte maç programı ve kanallar" [ref=e884] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/turkiye-kupa/2026/04/20/turkiye-kupasinda-ceyrek-final-heyecani-iste-mac-programi-ve-kanallar
+            - link "Türkiye Kupası'nda çeyrek final heyecanı! İşte maç programı ve kanallar" [ref=e886] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/turkiye-kupa/2026/04/20/turkiye-kupasinda-ceyrek-final-heyecani-iste-mac-programi-ve-kanallar
+              - generic [ref=e887]: Türkiye Kupası'nda çeyrek final heyecanı! İşte maç programı
+    - generic [ref=e888]:
+      - heading "SAKLAMBAÇ" [level=3] [ref=e889]:
+        - img [ref=e890]
+        - generic [ref=e892]: SAKLAMBAÇ
+      - generic [ref=e893]:
+        - generic [ref=e895]:
+          - 'figure "Bir anda her şey kül oldu! Pınar Altuğ''un yangınla değişen hayatı: “Varlıklı bir ailenin çocuğu iken...”" [ref=e897]':
+            - 'link "Bir anda her şey kül oldu! Pınar Altuğ''un yangınla değişen hayatı: “Varlıklı bir ailenin çocuğu iken...”" [ref=e898] [cursor=pointer]':
+              - /url: https://www.takvim.com.tr/galeri/magazin/pinar-altugun-yanginla-degisen-hayati-bana-miras-kalmadi
+            - 'link "Bir anda her şey kül oldu! Pınar Altuğ''un yangınla değişen hayatı: “Varlıklı bir ailenin çocuğu iken...”" [ref=e900] [cursor=pointer]':
+              - /url: https://www.takvim.com.tr/galeri/magazin/pinar-altugun-yanginla-degisen-hayati-bana-miras-kalmadi
+              - generic [ref=e901]: "Bir anda her şey kül oldu! Pınar Altuğ'un yangınla değişen hayatı: “Varlıklı bir ailenin çocuğu iken...”"
+          - figure "“Kimsesizler evinde kaydım var” demişti! Popstar'ın asi sesi Rıza Tamer'in betonda yattığı o zor günler ve hüzünlü vedası..." [ref=e903]:
+            - link "“Kimsesizler evinde kaydım var” demişti! Popstar'ın asi sesi Rıza Tamer'in betonda yattığı o zor günler ve hüzünlü vedası..." [ref=e904] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/galeri/magazin/riza-tamer-kimdir-popstardan-sokaklara-uzanan-hayat-hikayesi
+            - link "“Kimsesizler evinde kaydım var” demişti! Popstar'ın asi sesi Rıza Tamer'in betonda yattığı o zor günler ve hüzünlü vedası..." [ref=e907] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/galeri/magazin/riza-tamer-kimdir-popstardan-sokaklara-uzanan-hayat-hikayesi
+              - generic [ref=e908]: “Kimsesizler evinde kaydım var” demişti! Popstar'ın asi sesi Rıza Tamer'in betonda yattığı o zor günler ve hüzünlü vedası...
+        - generic [ref=e910]:
+          - figure "Avrupa Yakası'nın Zeynep'i 18 yıllık evliliği 10 dakikada noktaladı! Bihter Dinçel Ekmek Teknesi'nin yıldızının gelini çıktı" [ref=e912]:
+            - link "Avrupa Yakası'nın Zeynep'i 18 yıllık evliliği 10 dakikada noktaladı! Bihter Dinçel Ekmek Teknesi'nin yıldızının gelini çıktı" [ref=e913] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/galeri/magazin/bihter-dincel-ile-baris-dincel-bosandi-ayrilik-detaylari-ortaya-cikti
+            - link "Avrupa Yakası'nın Zeynep'i 18 yıllık evliliği 10 dakikada noktaladı! Bihter Dinçel Ekmek Teknesi'nin yıldızının gelini çıktı" [ref=e916] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/galeri/magazin/bihter-dincel-ile-baris-dincel-bosandi-ayrilik-detaylari-ortaya-cikti
+              - generic [ref=e917]: Avrupa Yakası'nın Zeynep'i 18 yıllık evliliği 10 dakikada noktaladı! Bihter Dinçel Ekmek Teknesi'nin yıldızının gelini çıktı
+          - 'figure "Perran Kutman’ın yıllara meydan okuyan sevdası: Bir ömürlük aşk! “Onun için dünyayı yakarım” dediği 48 yıllık eş..." [ref=e919]':
+            - 'link "Perran Kutman’ın yıllara meydan okuyan sevdası: Bir ömürlük aşk! “Onun için dünyayı yakarım” dediği 48 yıllık eş..." [ref=e920] [cursor=pointer]':
+              - /url: https://www.takvim.com.tr/galeri/magazin/perran-kutman-kimdir-48-yillik-evliligi-ve-esi-koral-saritas
+            - 'link "Perran Kutman’ın yıllara meydan okuyan sevdası: Bir ömürlük aşk! “Onun için dünyayı yakarım” dediği 48 yıllık eş..." [ref=e922] [cursor=pointer]':
+              - /url: https://www.takvim.com.tr/galeri/magazin/perran-kutman-kimdir-48-yillik-evliligi-ve-esi-koral-saritas
+              - generic [ref=e923]: "Perran Kutman’ın yıllara meydan okuyan sevdası: Bir ömürlük aşk! “Onun için dünyayı yakarım” dediği 48 yıllık eş..."
+        - generic [ref=e925]:
+          - figure "Serdar Turan–Çılga Turan boşanması 10 dakikada bitti! 'Tuba Ünsal'la çekilmiş ihanet fotoğrafları beni yıprattı'" [ref=e927]:
+            - link "Serdar Turan–Çılga Turan boşanması 10 dakikada bitti! 'Tuba Ünsal'la çekilmiş ihanet fotoğrafları beni yıprattı'" [ref=e928] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/magazin/2026/04/20/serdar-turancilga-turan-bosanmasi-10-dakika-surdu
+            - link "Serdar Turan–Çılga Turan boşanması 10 dakikada bitti! 'Tuba Ünsal'la çekilmiş ihanet fotoğrafları beni yıprattı'" [ref=e930] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/magazin/2026/04/20/serdar-turancilga-turan-bosanmasi-10-dakika-surdu
+              - generic [ref=e931]: Serdar Turan-Çılga Turan boşanması 10 dakika sürdü
+          - 'figure "İş insanı Ömer Koç fotoğrafını çeken muhabiri çembere aldı: \"Hemen o fotoğrafları silin\"" [ref=e933]':
+            - 'link "İş insanı Ömer Koç fotoğrafını çeken muhabiri çembere aldı: \"Hemen o fotoğrafları silin\"" [ref=e934] [cursor=pointer]':
+              - /url: https://www.takvim.com.tr/magazin/2026/04/20/omer-koc-muhabire-sert-cikti
+            - 'link "İş insanı Ömer Koç fotoğrafını çeken muhabiri çembere aldı: \"Hemen o fotoğrafları silin\"" [ref=e937] [cursor=pointer]':
+              - /url: https://www.takvim.com.tr/magazin/2026/04/20/omer-koc-muhabire-sert-cikti
+              - generic [ref=e938]: Ömer Koç muhabire sert çıktı
+        - generic [ref=e940]:
+          - 'figure "A.B.İ.''nin güzel oyuncusu Afra Saraçoğlu''na her dilde övgü: İtalya sokaklarına damga vurdu" [ref=e942]':
+            - 'link "A.B.İ.''nin güzel oyuncusu Afra Saraçoğlu''na her dilde övgü: İtalya sokaklarına damga vurdu" [ref=e943] [cursor=pointer]':
+              - /url: https://www.takvim.com.tr/magazin/2026/04/20/afra-saracogluna-her-dilde-ovgu
+            - 'link "A.B.İ.''nin güzel oyuncusu Afra Saraçoğlu''na her dilde övgü: İtalya sokaklarına damga vurdu" [ref=e946] [cursor=pointer]':
+              - /url: https://www.takvim.com.tr/magazin/2026/04/20/afra-saracogluna-her-dilde-ovgu
+              - generic [ref=e947]: Afra Saraçoğlu'na her dilde övgü
+          - 'figure "Milyoner''de 200 bin TL''lik \"Kurban Bayramı\" sorusu: İki joker birden gitti!" [ref=e949]':
+            - 'link "Milyoner''de 200 bin TL''lik \"Kurban Bayramı\" sorusu: İki joker birden gitti!" [ref=e950] [cursor=pointer]':
+              - /url: https://www.takvim.com.tr/televizyon/2026/04/19/milyonerde-200-bin-tllik-kurban-bayrami-sorusu-iki-joker-birden-gitti
+            - 'link "Milyoner''de 200 bin TL''lik \"Kurban Bayramı\" sorusu: İki joker birden gitti!" [ref=e952] [cursor=pointer]':
+              - /url: https://www.takvim.com.tr/televizyon/2026/04/19/milyonerde-200-bin-tllik-kurban-bayrami-sorusu-iki-joker-birden-gitti
+              - generic [ref=e953]: "\"Kurban Bayramı\" sorusu terletti"
+    - generic [ref=e954]:
+      - heading "HAYAT" [level=3] [ref=e955]:
+        - img [ref=e956]
+        - generic [ref=e958]: HAYAT
+      - generic [ref=e959]:
+        - generic [ref=e961]:
+          - 'figure "2026''nın en iyi turizm köyleri adayları: Türkiye''den 4 yer dünya listesine girdi!" [ref=e963]':
+            - 'link "2026''nın en iyi turizm köyleri adayları: Türkiye''den 4 yer dünya listesine girdi!" [ref=e964] [cursor=pointer]':
+              - /url: https://www.takvim.com.tr/galeri/yasam/turkiyenin-en-iyi-turizm-koyu-adaylari
+            - 'link "2026''nın en iyi turizm köyleri adayları: Türkiye''den 4 yer dünya listesine girdi!" [ref=e966] [cursor=pointer]':
+              - /url: https://www.takvim.com.tr/galeri/yasam/turkiyenin-en-iyi-turizm-koyu-adaylari
+              - generic [ref=e967]: 2026'nın en iyi turizm köyleri
+          - 'figure "Asr-ı Saadet’ten günümüze: Hayat rehberi 10 hadis" [ref=e969]':
+            - 'link "Asr-ı Saadet’ten günümüze: Hayat rehberi 10 hadis" [ref=e970] [cursor=pointer]':
+              - /url: https://www.takvim.com.tr/galeri/yasam/asr-i-saadetten-gunumuze-hayat-rehberi-10-hadis
+            - 'link "Asr-ı Saadet’ten günümüze: Hayat rehberi 10 hadis" [ref=e973] [cursor=pointer]':
+              - /url: https://www.takvim.com.tr/galeri/yasam/asr-i-saadetten-gunumuze-hayat-rehberi-10-hadis
+              - generic [ref=e974]: "Asr-ı Saadet’ten günümüze: Hayat rehberi 10 hadis"
+        - generic [ref=e976]:
+          - 'figure "Yüzyıllık bilmece yanıtlandı: Shakespeare’in “kayıp evi” nihayet bulundu" [ref=e978]':
+            - 'link "Yüzyıllık bilmece yanıtlandı: Shakespeare’in “kayıp evi” nihayet bulundu" [ref=e979] [cursor=pointer]':
+              - /url: https://www.takvim.com.tr/galeri/dunya/yuzyillik-bilmece-yanitlandi-shakespearein-kayip-evi-nihayet-bulundu
+            - 'link "Yüzyıllık bilmece yanıtlandı: Shakespeare’in “kayıp evi” nihayet bulundu" [ref=e982] [cursor=pointer]':
+              - /url: https://www.takvim.com.tr/galeri/dunya/yuzyillik-bilmece-yanitlandi-shakespearein-kayip-evi-nihayet-bulundu
+              - generic [ref=e983]: "Yüzyıllık bilmece yanıtlandı: Shakespeare’in “kayıp evi” nihayet bulundu"
+          - 'figure "Uyurken beyniniz kendini yıkıyor: Bilim insanları süreci ilk kez gözlemledi" [ref=e985]':
+            - 'link "Uyurken beyniniz kendini yıkıyor: Bilim insanları süreci ilk kez gözlemledi" [ref=e986] [cursor=pointer]':
+              - /url: https://www.takvim.com.tr/galeri/yasam/uyurken-beyniniz-kendini-yikiyor-bilim-insanlari-sureci-ilk-kez-gozlemledi
+            - 'link "Uyurken beyniniz kendini yıkıyor: Bilim insanları süreci ilk kez gözlemledi" [ref=e988] [cursor=pointer]':
+              - /url: https://www.takvim.com.tr/galeri/yasam/uyurken-beyniniz-kendini-yikiyor-bilim-insanlari-sureci-ilk-kez-gozlemledi
+              - generic [ref=e989]: "Uyurken beyniniz kendini yıkıyor: Bilim insanları süreci ilk kez gözlemledi"
+        - generic [ref=e991]:
+          - 'figure "Yılanın başı algoritma! Tiktok çöplüğünde rezalet üstüne rezalet: \"Karagül\" örneği ve şiddeti ödüllendirme mekanizması" [ref=e993]':
+            - 'link "Yılanın başı algoritma! Tiktok çöplüğünde rezalet üstüne rezalet: \"Karagül\" örneği ve şiddeti ödüllendirme mekanizması" [ref=e994] [cursor=pointer]':
+              - /url: https://www.takvim.com.tr/guncel/2026/04/20/tiktok-coplugunde-yeni-rezalet-canli-yayinda-hemcinsini-bicaklayan-karagule-hediye-yagdi
+            - 'link "Yılanın başı algoritma! Tiktok çöplüğünde rezalet üstüne rezalet: \"Karagül\" örneği ve şiddeti ödüllendirme mekanizması" [ref=e996] [cursor=pointer]':
+              - /url: https://www.takvim.com.tr/guncel/2026/04/20/tiktok-coplugunde-yeni-rezalet-canli-yayinda-hemcinsini-bicaklayan-karagule-hediye-yagdi
+              - generic [ref=e997]: Tiktok'taki şeytani algoritma
+          - 'figure "Küfürbaz Grok başını yakacak: Elon Musk ifadeye... Paris-Washington karşı karşıya | X-IT yok" [ref=e999]':
+            - 'link "Küfürbaz Grok başını yakacak: Elon Musk ifadeye... Paris-Washington karşı karşıya | X-IT yok" [ref=e1000] [cursor=pointer]':
+              - /url: https://www.takvim.com.tr/dunya/kufurbaz-grok-basini-yakacak-elon-musk-ifadeye-cagrildi-paris-washington-karsi-karsiya-6414055
+            - 'link "Küfürbaz Grok başını yakacak: Elon Musk ifadeye... Paris-Washington karşı karşıya | X-IT yok" [ref=e1003] [cursor=pointer]':
+              - /url: https://www.takvim.com.tr/dunya/kufurbaz-grok-basini-yakacak-elon-musk-ifadeye-cagrildi-paris-washington-karsi-karsiya-6414055
+              - generic [ref=e1004]: Musk'a Grok davasında X-IT yok
+        - generic [ref=e1006]:
+          - 'figure "Küresel uyuşturucu ağına yönelik soruşturmada iddianame hazır: 14 şirket 35 şüpheli" [ref=e1008]':
+            - 'link "Küresel uyuşturucu ağına yönelik soruşturmada iddianame hazır: 14 şirket 35 şüpheli" [ref=e1009] [cursor=pointer]':
+              - /url: https://www.takvim.com.tr/guncel/2026/04/20/kuresel-uyusturucu-agina-yonelik-sorusturmada-iddianame-hazir-14-sirket-35-supheli
+            - 'link "Küresel uyuşturucu ağına yönelik soruşturmada iddianame hazır: 14 şirket 35 şüpheli" [ref=e1012] [cursor=pointer]':
+              - /url: https://www.takvim.com.tr/guncel/2026/04/20/kuresel-uyusturucu-agina-yonelik-sorusturmada-iddianame-hazir-14-sirket-35-supheli
+              - generic [ref=e1013]: Listede 14 şirket 35 şüpheli var
+          - figure "Eşme Belediyesi’ndeki rüşvet ağı soruşturmasında şüpheliler adliyede | Başkan Tozan ve eşi ne anlatacak?" [ref=e1015]:
+            - link "Eşme Belediyesi’ndeki rüşvet ağı soruşturmasında şüpheliler adliyede | Başkan Tozan ve eşi ne anlatacak?" [ref=e1016] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/guncel/2026/04/20/esme-belediyesindeki-rusvet-agi-sorusturmasinda-supheliler-adliyede-baskan-tozan-ve-esi-ne-anlatacak
+            - link "Eşme Belediyesi’ndeki rüşvet ağı soruşturmasında şüpheliler adliyede | Başkan Tozan ve eşi ne anlatacak?" [ref=e1018] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/guncel/2026/04/20/esme-belediyesindeki-rusvet-agi-sorusturmasinda-supheliler-adliyede-baskan-tozan-ve-esi-ne-anlatacak
+              - generic [ref=e1019]: Eşme rüşvetçileri adliyede
+  - generic [ref=e1021]:
+    - heading "TAKVİM TV" [level=3] [ref=e1022]:
+      - img [ref=e1023]
+      - generic [ref=e1025]: TAKVİM TV
+    - generic [ref=e1026]:
+      - generic [ref=e1028]:
+        - generic [ref=e1029]:
+          - group "1 / 4" [ref=e1030]:
+            - generic [ref=e1031]:
+              - link "Menderes’te doktor Beyza’nın öldüğü kaza anı kamerada" [ref=e1032] [cursor=pointer]:
+                - /url: https://www.takvim.com.tr/video/haber-videolari/izmir-menderes-trafik-kazasi-doktor-beyza-nur-purmus-oldugu-beton-bariyere-carptigi-kaza-ani-goruntusu-ortaya-cikti
+                - img "Menderes’te doktor Beyza’nın öldüğü kaza anı kamerada" [ref=e1033]
+              - link "Menderes’te doktor Beyza’nın öldüğü kaza anı kamerada" [ref=e1035] [cursor=pointer]:
+                - /url: https://www.takvim.com.tr/video/haber-videolari/izmir-menderes-trafik-kazasi-doktor-beyza-nur-purmus-oldugu-beton-bariyere-carptigi-kaza-ani-goruntusu-ortaya-cikti
+                - text: Menderes'te doktor Beyza'nın öldüğü kaza anı kamerada
+          - group "2 / 4" [ref=e1036]:
+            - generic [ref=e1037]:
+              - 'link "Gülistan Doku cinayeti soruşturması: Gözaltılar ve yeni gelişmeler" [ref=e1038] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/video/haber-videolari/gulistan-doku-cinayeti-sorusturmasi-gozaltilar-ve-yeni-gelismeler
+                - 'img "Gülistan Doku cinayeti soruşturması: Gözaltılar ve yeni gelişmeler" [ref=e1039]'
+              - 'link "Gülistan Doku cinayeti soruşturması: Gözaltılar ve yeni gelişmeler" [ref=e1041] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/video/haber-videolari/gulistan-doku-cinayeti-sorusturmasi-gozaltilar-ve-yeni-gelismeler
+          - group "3 / 4" [ref=e1042]:
+            - generic [ref=e1043]:
+              - link "Kahramanmaraş İl Milli Eğitim Müdürü görevden alındı" [ref=e1044] [cursor=pointer]:
+                - /url: https://www.takvim.com.tr/video/guncel-videolari/kahramanmaras-il-milli-egitim-muduru-erhan-baydur-gorevden-alindi
+                - img "Kahramanmaraş İl Milli Eğitim Müdürü görevden alındı" [ref=e1045]
+              - link "Kahramanmaraş İl Milli Eğitim Müdürü görevden alındı" [ref=e1047] [cursor=pointer]:
+                - /url: https://www.takvim.com.tr/video/guncel-videolari/kahramanmaras-il-milli-egitim-muduru-erhan-baydur-gorevden-alindi
+          - group "4 / 4" [ref=e1048]:
+            - generic [ref=e1049]:
+              - 'link "İstanbul barajlarında yağmur bereketi: Ömerli %90’ı aştı!" [ref=e1050] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/video/guncel-videolari/istanbul-baraj-doluluk-oranlari-nisan-2026-omerli-baraji-yuzde-90
+                - 'img "İstanbul barajlarında yağmur bereketi: Ömerli %90’ı aştı!" [ref=e1051]'
+              - 'link "İstanbul barajlarında yağmur bereketi: Ömerli %90’ı aştı!" [ref=e1053] [cursor=pointer]':
+                - /url: https://www.takvim.com.tr/video/guncel-videolari/istanbul-baraj-doluluk-oranlari-nisan-2026-omerli-baraji-yuzde-90
+        - button "Previous slide" [ref=e1054] [cursor=pointer]:
+          - img [ref=e1055]
+        - button "Next slide" [ref=e1057] [cursor=pointer]:
+          - img [ref=e1058]
+        - generic [ref=e1060]:
+          - link "1" [ref=e1061] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/video/haber-videolari/izmir-menderes-trafik-kazasi-doktor-beyza-nur-purmus-oldugu-beton-bariyere-carptigi-kaza-ani-goruntusu-ortaya-cikti
+            - generic [ref=e1062]: "1"
+          - link "2" [ref=e1063] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/video/haber-videolari/gulistan-doku-cinayeti-sorusturmasi-gozaltilar-ve-yeni-gelismeler
+            - generic [ref=e1064]: "2"
+          - link "3" [ref=e1065] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/video/guncel-videolari/kahramanmaras-il-milli-egitim-muduru-erhan-baydur-gorevden-alindi
+            - generic [ref=e1066]: "3"
+          - link "4" [ref=e1067] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/video/guncel-videolari/istanbul-baraj-doluluk-oranlari-nisan-2026-omerli-baraji-yuzde-90
+            - generic [ref=e1068]: "4"
+      - generic [ref=e1070]:
+        - 'link "Afyonkarahisar’da komşu kavgası: 2 ölü" [ref=e1071] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/video/guncel-videolari/afyonkarahisar-komsu-kavgasi-gurultu-hali-cirpma-cinayeti-kades
+          - 'img "Afyonkarahisar’da komşu kavgası: 2 ölü" [ref=e1073]'
+          - generic [ref=e1074]: "Afyonkarahisar'da komşu kavgası: 2 ölü"
+        - 'link "Müge Anlı’da evlilik vaadiyle vurgun: Aşk hayalleri kabusa döndü" [ref=e1075] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/video/televizyon-videolari/muge-anli-recep-onder-gulbahar-evlilik-vaadiyle-dolandiricilik-20-bin-dolar
+          - 'img "Müge Anlı’da evlilik vaadiyle vurgun: Aşk hayalleri kabusa döndü" [ref=e1077]'
+          - generic [ref=e1078]: "Müge Anlı'da evlilik vaadiyle vurgun: Aşk hayalleri kabusa döndü"
+        - link "Canlı yayında dehşet! Fenomen Karagül tartıştığı kadını bıçakladı" [ref=e1079] [cursor=pointer]:
+          - /url: https://www.takvim.com.tr/video/magazin-videolari/tiktok-fenomeni-karagul-bicaklama-videosu
+          - img "Canlı yayında dehşet! Fenomen Karagül tartıştığı kadını bıçakladı" [ref=e1081]
+          - generic [ref=e1082]: Canlı yayında dehşet! Fenomen Karagül tartıştığı kadını bıçakladı
+        - link "Kahramanmaraş’ta okul saldırısı sonrası eğitim başladı" [ref=e1083] [cursor=pointer]:
+          - /url: https://www.takvim.com.tr/video/guncel-videolari/kahramanmarasta-okul-saldirisi-sonrasi-egitim-basladi
+          - img "Kahramanmaraş’ta okul saldırısı sonrası eğitim başladı" [ref=e1085]
+          - generic [ref=e1086]: Kahramanmaraş'ta okul saldırısı sonrası eğitim başladı
+        - 'link "Kahramanmaraş katliamında şok detay: Saldırıyı önceden söylemiş!" [ref=e1087] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/video/haber-videolari/kahramanmaras-okul-saldirisi-isa-aras-mersinli-detaylar-ozel-haber
+          - 'img "Kahramanmaraş katliamında şok detay: Saldırıyı önceden söylemiş!" [ref=e1089]'
+          - generic [ref=e1090]: "Kahramanmaraş katliamında şok detay: Saldırıyı önceden söylemiş!"
+  - generic [ref=e1091]:
+    - generic [ref=e1092]:
+      - generic [ref=e1093]:
+        - heading "TRENDLER" [level=3] [ref=e1094]
+        - list [ref=e1095]:
+          - listitem [ref=e1096]:
+            - 'link "Yüzyıllık bilmece yanıtlandı: Shakespeare’in kayıp evi nihayet bulundu" [ref=e1097] [cursor=pointer]':
+              - /url: https://www.takvim.com.tr/galeri/dunya/yuzyillik-bilmece-yanitlandi-shakespearein-kayip-evi-nihayet-bulundu
+              - generic [ref=e1098]: "Yüzyıllık bilmece yanıtlandı: Shakespeare’in “kayıp evi” nihayet bulundu"
+          - listitem [ref=e1099]:
+            - link "Son perde açılıyor! Aynı Yağmur Altında kayıp bebek sırrı" [ref=e1100] [cursor=pointer]:
+              - /url: https://www.takvim.com.tr/galeri/televizyon/son-perde-aciliyor-ayni-yagmur-altinda-kayip-bebek-sirri-rosadan-surpriz-karar
+              - generic [ref=e1101]: Son perde açılıyor! Aynı Yağmur Altında "kayıp bebek" sırrı
+          - listitem [ref=e1102]:
+            - 'link "Gökyüzündeki istasyon iptal: NASA’nın yeni planı belli oldu" [ref=e1103] [cursor=pointer]':
+              - /url: https://www.takvim.com.tr/dunya/gokyuzundeki-istasyon-iptal-nasanin-yeni-plani-belli-oldu-6396446
+              - generic [ref=e1104]: "Gökyüzündeki istasyon iptal: NASA'nın yeni planı belli oldu"
+          - listitem [ref=e1105]:
+            - 'link "Galaksinin en kirli gezegeni bulundu: Hem erimiş halde hem de zehir soluyor" [ref=e1106] [cursor=pointer]':
+              - /url: https://www.takvim.com.tr/dunya/evrenin-en-pis-kokulu-gezegeni-bulundu-yuzeyi-tamamen-erimis-halde-6389567
+              - generic [ref=e1107]: "Galaksinin en kirli gezegeni bulundu: Hem erimiş halde hem de zehir soluyor"
+          - listitem [ref=e1108]:
+            - 'link "Yıldırımın peşini bırakmadığı adam: Roy Sullivan’ın akıl almaz hikayesi" [ref=e1109] [cursor=pointer]':
+              - /url: https://www.takvim.com.tr/galeri/yasam/yildirimin-pesini-birakmadigi-adam-roy-sullivanin-akil-almaz-hikayesi
+              - generic [ref=e1110]: "Yıldırımın peşini bırakmadığı adam: Roy Sullivan’ın akıl almaz hikayesi"
+      - list [ref=e1112]:
+        - listitem [ref=e1113]:
+          - link "Koç" [ref=e1114] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/astroloji/koc-burcu-gunluk-yorumu
+            - generic [ref=e1116]:
+              - text: 21 Mart
+              - text: 20 Nisan
+            - heading "KOÇ" [level=5] [ref=e1117]
+        - listitem [ref=e1118]:
+          - link "Boğa" [ref=e1119] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/astroloji/boga-burcu-gunluk-yorumu
+            - generic [ref=e1121]:
+              - text: 20 Nisan
+              - text: 21 Mayıs
+            - heading "BOĞA" [level=5] [ref=e1122]
+        - listitem [ref=e1123]:
+          - link "İkizler" [ref=e1124] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/astroloji/ikizler-burcu-gunluk-yorumu
+            - generic [ref=e1126]:
+              - text: 21 Nisan
+              - text: 21 Haziran
+            - heading "İKİZLER" [level=5] [ref=e1127]
+        - listitem [ref=e1128]:
+          - link "Yengeç" [ref=e1129] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/astroloji/yengec-burcu-gunluk-yorumu
+            - generic [ref=e1131]:
+              - text: 22 Haziran
+              - text: 22 Temmuz
+            - heading "YENGEÇ" [level=5] [ref=e1132]
+        - listitem [ref=e1133]:
+          - link "Aslan" [ref=e1134] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/astroloji/aslan-burcu-gunluk-yorumu
+            - generic [ref=e1136]:
+              - text: 23 Temmuz
+              - text: 23 Ağustos
+            - heading "ASLAN" [level=5] [ref=e1137]
+        - listitem [ref=e1138]:
+          - link "Basak" [ref=e1139] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/astroloji/basak-burcu-gunluk-yorumu
+            - generic [ref=e1141]:
+              - text: 22 Ağustos
+              - text: 24 Eylül
+            - heading "BAŞAK" [level=5] [ref=e1142]
+        - listitem [ref=e1143]:
+          - link "Terazi" [ref=e1144] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/astroloji/terazi-burcu-gunluk-yorumu
+            - generic [ref=e1146]:
+              - text: 21 Eylül
+              - text: 21 Ekim
+            - heading "TERAZİ" [level=5] [ref=e1147]
+        - listitem [ref=e1148]:
+          - link "Akrep" [ref=e1149] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/astroloji/akrep-burcu-gunluk-yorumu
+            - generic [ref=e1151]:
+              - text: 22 Ekim
+              - text: 22 Kasım
+            - heading "AKREP" [level=5] [ref=e1152]
+        - listitem [ref=e1153]:
+          - link "Yay" [ref=e1154] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/astroloji/yay-burcu-gunluk-yorumu
+            - generic [ref=e1156]:
+              - text: 22 EKİM
+              - text: 21 Aralık
+            - heading "YAY" [level=5] [ref=e1157]
+        - listitem [ref=e1158]:
+          - link "Oğlak" [ref=e1159] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/astroloji/oglak-burcu-gunluk-yorumu
+            - generic [ref=e1161]:
+              - text: 22 Aralık
+              - text: 20 Ocak
+            - heading "OĞLAK" [level=5] [ref=e1162]
+        - listitem [ref=e1163]:
+          - link "Kova" [ref=e1164] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/astroloji/kova-burcu-gunluk-yorumu
+            - generic [ref=e1166]:
+              - text: 21 Ocak
+              - text: 19 Şubat
+            - heading "KOVA" [level=5] [ref=e1167]
+        - listitem [ref=e1168]:
+          - link "Balık" [ref=e1169] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/astroloji/balik-burcu-gunluk-yorumu
+            - generic [ref=e1171]:
+              - text: 20 Şubat
+              - text: 20 Mart
+            - heading "BALIK" [level=5] [ref=e1172]
+      - iframe [ref=e1178]:
+        
+    - generic [ref=e1179]:
+      - 'figure "Eşinden şiddet gören Yıldız Asyalı’nın yardım çığlığı: Babasına saldırıp aracı gasp etti" [ref=e1181]':
+        - 'link "Eşinden şiddet gören Yıldız Asyalı’nın yardım çığlığı: Babasına saldırıp aracı gasp etti" [ref=e1182] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/magazin/2026/04/19/esinden-siddet-goren-yildiz-asyalinin-yardim-cigligi
+        - 'link "Eşinden şiddet gören Yıldız Asyalı’nın yardım çığlığı: Babasına saldırıp aracı gasp etti" [ref=e1184] [cursor=pointer]':
+          - /url: "javascript:"
+          - generic [ref=e1185]: "Eşinden şiddet gören Yıldız Asyalı'nın yardım çığlığı: Babasına saldırıp aracı gasp etti"
+      - generic [ref=e1187]:
+        - 'figure "Bedri Güntay''la boşanma aşamasında olan Pelin Karahan''ı kaçıran evlilik sorusu: Tek kelime etmedi" [ref=e1189]':
+          - 'link "Bedri Güntay''la boşanma aşamasında olan Pelin Karahan''ı kaçıran evlilik sorusu: Tek kelime etmedi" [ref=e1190] [cursor=pointer]':
+            - /url: https://www.takvim.com.tr/magazin/2026/04/19/pelin-karahani-kaciran-bosanma-sorusu
+          - 'link "Bedri Güntay''la boşanma aşamasında olan Pelin Karahan''ı kaçıran evlilik sorusu: Tek kelime etmedi" [ref=e1192] [cursor=pointer]':
+            - /url: https://www.takvim.com.tr/magazin/2026/04/19/pelin-karahani-kaciran-bosanma-sorusu
+            - generic [ref=e1193]: Pelin Karahan'ı kaçıran boşanma sorusu
+        - 'figure "Galatasaray’ın eski yıldızı Melo ve eşi Nagel''in romantik Kapadokya gezisi: Yükseklik korkusunu aştı" [ref=e1195]':
+          - 'link "Galatasaray’ın eski yıldızı Melo ve eşi Nagel''in romantik Kapadokya gezisi: Yükseklik korkusunu aştı" [ref=e1196] [cursor=pointer]':
+            - /url: https://www.takvim.com.tr/magazin/2026/04/19/felipe-melo-ve-esi-nagelin-romantik-kapadokya-gezisi
+          - 'link "Galatasaray’ın eski yıldızı Melo ve eşi Nagel''in romantik Kapadokya gezisi: Yükseklik korkusunu aştı" [ref=e1198] [cursor=pointer]':
+            - /url: https://www.takvim.com.tr/magazin/2026/04/19/felipe-melo-ve-esi-nagelin-romantik-kapadokya-gezisi
+            - generic [ref=e1199]: Melo ve eşi Nagel'in romantik Kapadokya gezisi
+        - 'figure "Korkulu rüya değil doğal bir süreç: Menopoz hakkında doğru bilinen yanlışlar" [ref=e1201]':
+          - 'link "Korkulu rüya değil doğal bir süreç: Menopoz hakkında doğru bilinen yanlışlar" [ref=e1202] [cursor=pointer]':
+            - /url: https://www.takvim.com.tr/saglik/korkulu-ruya-degil-dogal-bir-surec-menopoz-hakkinda-dogru-bilinen-yanlislar-6413122
+          - 'link "Korkulu rüya değil doğal bir süreç: Menopoz hakkında doğru bilinen yanlışlar" [ref=e1204] [cursor=pointer]':
+            - /url: https://www.takvim.com.tr/saglik/korkulu-ruya-degil-dogal-bir-surec-menopoz-hakkinda-dogru-bilinen-yanlislar-6413122
+            - generic [ref=e1205]: Eyvah menopoz
+        - 'figure "Dijital oyunlara ve 15 yaş altına sosyal medya düzenlemesi geliyor: Bakan Mahinur Özdemir Göktaş açıkladı" [ref=e1207]':
+          - 'link "Dijital oyunlara ve 15 yaş altına sosyal medya düzenlemesi geliyor: Bakan Mahinur Özdemir Göktaş açıkladı" [ref=e1208] [cursor=pointer]':
+            - /url: https://www.takvim.com.tr/guncel/2026/04/18/dijital-oyunlara-ve-15-yas-altina-sosyal-medya-duzenlemesi-geliyor-bakan-mahinur-ozdemir-goktas-acikladi
+          - 'link "Dijital oyunlara ve 15 yaş altına sosyal medya düzenlemesi geliyor: Bakan Mahinur Özdemir Göktaş açıkladı" [ref=e1210] [cursor=pointer]':
+            - /url: https://www.takvim.com.tr/guncel/2026/04/18/dijital-oyunlara-ve-15-yas-altina-sosyal-medya-duzenlemesi-geliyor-bakan-mahinur-ozdemir-goktas-acikladi
+            - generic [ref=e1211]: Oyunlara ve 15 yaş altına sosyal medya düzenlemesi geliyor
+      - generic [ref=e1212]:
+        - img "YouTube" [ref=e1213]
+        - generic [ref=e1214]:
+          - 'link "Küçük İbo hayatıyla ilgili bilinmeyenlerini ilk kez TAKVİM’e anlattı: Beni öldü sandılar..." [ref=e1215] [cursor=pointer]':
+            - /url: https://www.youtube.com/watch?v=tLuW_AZjGno
+            - 'img "Küçük İbo hayatıyla ilgili bilinmeyenlerini ilk kez TAKVİM’e anlattı: Beni öldü sandılar..." [ref=e1217]'
+            - generic [ref=e1218]: "Küçük İbo hayatıyla ilgili bilinmeyenlerini ilk kez TAKVİM'e anlattı: Beni öldü sandılar..."
+          - 'link "Bakan Yusuf Tekin’den LGS iddiasına sert yanıt: Pis koku geliyorsa CHP Genel Merkezi’nden çıksınlar" [ref=e1219] [cursor=pointer]':
+            - /url: https://www.youtube.com/watch?v=6sHPQJQN3X4
+            - 'img "Bakan Yusuf Tekin’den LGS iddiasına sert yanıt: Pis koku geliyorsa CHP Genel Merkezi’nden çıksınlar" [ref=e1221]'
+            - generic [ref=e1222]: "Bakan Yusuf Tekin’den LGS iddiasına sert yanıt: Pis koku geliyorsa CHP Genel Merkezi’nden çıksınlar"
+          - link "Gönüllülüğün sessiz mimarı Doktor Gülsen Ataseven’in hayatını konu alan kitap okurlarla buluştu" [ref=e1223] [cursor=pointer]:
+            - /url: https://www.youtube.com/watch?v=bBWTGR2dUas
+            - img "Gönüllülüğün sessiz mimarı Doktor Gülsen Ataseven’in hayatını konu alan kitap okurlarla buluştu" [ref=e1225]
+            - generic [ref=e1226]: Gönüllülüğün sessiz mimarı Doktor Gülsen Ataseven'in hayatını konu alan kitap okurlarla buluştu
+          - link "AK Parti İstanbul İl Başkanı Abdullah Özdemir hiç bilinmeyen yönlerini sadece Takvim ile paylaştı" [ref=e1227] [cursor=pointer]:
+            - /url: https://www.youtube.com/watch?v=w-fVMBtDY5c
+            - img "AK Parti İstanbul İl Başkanı Abdullah Özdemir hiç bilinmeyen yönlerini sadece Takvim ile paylaştı" [ref=e1229]
+            - generic [ref=e1230]: AK Parti İstanbul İl Başkanı Abdullah Özdemir hiç bilinmeyen yönlerini sadece Takvim ile paylaştı
+        - link "YouTube Takvim" [ref=e1232] [cursor=pointer]:
+          - /url: https://www.youtube.com/takvim
+          - text: Tümünü Gör
+          - img [ref=e1233]
+    - generic [ref=e1235]:
+      - 'figure "Gülistan dosyasında görüntülü itiraf | Valinin oğluna \"doku\"nan sözler: \"Hamile kaldı kafasına sıktım\"" [ref=e1237]':
+        - 'link "Gülistan dosyasında görüntülü itiraf | Valinin oğluna \"doku\"nan sözler: \"Hamile kaldı kafasına sıktım\"" [ref=e1238] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/guncel/2026/04/18/gulistan-dosyasinda-goruntulu-itiraf-valinin-ogluna-dokunan-sozler-hamile-kaldi-kafasina-siktim
+        - 'link "Gülistan dosyasında görüntülü itiraf | Valinin oğluna \"doku\"nan sözler: \"Hamile kaldı kafasına sıktım\"" [ref=e1240] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/guncel/2026/04/18/gulistan-dosyasinda-goruntulu-itiraf-valinin-ogluna-dokunan-sozler-hamile-kaldi-kafasina-siktim
+          - generic [ref=e1241]: "\"Kız hamile kaldı ben de kafasına sıktım\""
+      - 'figure "Emekliye 4,22 puanlık zam farkı: Temmuzda refah payı ve eşitleme modeli gündemde" [ref=e1243]':
+        - 'link "Emekliye 4,22 puanlık zam farkı: Temmuzda refah payı ve eşitleme modeli gündemde" [ref=e1244] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/ekonomi/2026/04/19/emekli-zamminda-422-puan-refah-payi-hesabi
+          - generic: 2 FORMÜL GÜNDEMDE
+        - 'link "Emekliye 4,22 puanlık zam farkı: Temmuzda refah payı ve eşitleme modeli gündemde" [ref=e1246] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/ekonomi/2026/04/19/emekli-zamminda-422-puan-refah-payi-hesabi
+          - generic [ref=e1247]: Emekliye 4,2 refah payı sinyali
+    - generic [ref=e1252]:
+      - 'figure "AFAD duyurdu: Akdeniz''de 4,7 büyüklüğünde deprem" [ref=e1254]':
+        - 'link "AFAD duyurdu: Akdeniz''de 4,7 büyüklüğünde deprem" [ref=e1255] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/haberler/2026/04/19/akdenizde-47-buyuklugunde-deprem
+          - generic: AFAD DUYURDU
+        - 'link "AFAD duyurdu: Akdeniz''de 4,7 büyüklüğünde deprem" [ref=e1257] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/haberler/2026/04/19/akdenizde-47-buyuklugunde-deprem
+          - generic [ref=e1258]: Akdeniz'de 4,7 büyüklüğünde deprem!
+      - figure "Beşiktaş Juventus'un yıldızını istiyor! Kanat transferinde ilk hedef" [ref=e1260]:
+        - link "Beşiktaş Juventus'un yıldızını istiyor! Kanat transferinde ilk hedef" [ref=e1261] [cursor=pointer]:
+          - /url: https://www.takvim.com.tr/besiktas/2026/04/18/besiktas-juventusun-yildizini-istiyor-kanat-transferinde-ilk-hedef
+        - link "Beşiktaş Juventus'un yıldızını istiyor! Kanat transferinde ilk hedef" [ref=e1263] [cursor=pointer]:
+          - /url: https://www.takvim.com.tr/besiktas/2026/04/18/besiktas-juventusun-yildizini-istiyor-kanat-transferinde-ilk-hedef
+          - generic [ref=e1264]: Beşiktaş Juventus'un yıldızına talip
+      - 'figure "Önce \"tecavüz ve cinayet\" iddiası sonra dijital temizlik: Gülistan Doku''nun hastane kayıtlarının silindiği ortaya çıktı" [ref=e1266]':
+        - 'link "Önce \"tecavüz ve cinayet\" iddiası sonra dijital temizlik: Gülistan Doku''nun hastane kayıtlarının silindiği ortaya çıktı" [ref=e1267] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/guncel/2026/04/17/once-tecavuz-ve-cinayet-iddiasi-sonra-dijital-temizlik-gulistan-dokunun-hastane-kayitlarinin-silindigi-ortaya-cikti
+        - 'link "Önce \"tecavüz ve cinayet\" iddiası sonra dijital temizlik: Gülistan Doku''nun hastane kayıtlarının silindiği ortaya çıktı" [ref=e1269] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/guncel/2026/04/17/once-tecavuz-ve-cinayet-iddiasi-sonra-dijital-temizlik-gulistan-dokunun-hastane-kayitlarinin-silindigi-ortaya-cikti
+          - generic [ref=e1270]: Önce tecavüz ve infaz sonra temizlik!
+      - 'figure "Gülistan''ın acılı annesinden adliye önünde isyan: \"Kızımın kemikleri de inan ki yakılmış\"" [ref=e1272]':
+        - 'link "Gülistan''ın acılı annesinden adliye önünde isyan: \"Kızımın kemikleri de inan ki yakılmış\"" [ref=e1273] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/yasam/2026/04/18/gulistanin-acili-annesinden-adliye-onunde-isyan-kizimin-kemikleri-de-inan-ki-yakilmis
+          - generic: "\"KIZIMIN KEMİKLERİ DE YAKILMIŞ\""
+        - 'link "Gülistan''ın acılı annesinden adliye önünde isyan: \"Kızımın kemikleri de inan ki yakılmış\"" [ref=e1275] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/yasam/2026/04/18/gulistanin-acili-annesinden-adliye-onunde-isyan-kizimin-kemikleri-de-inan-ki-yakilmis
+          - generic [ref=e1276]: Gülistan'ın acılı annesinden adliye önünde isyan
+      - 'figure "Özkan Yalım’ın sevgilileriyle görüntüleri sızdı: Hem arabada hem yatta" [ref=e1278]':
+        - 'link "Özkan Yalım’ın sevgilileriyle görüntüleri sızdı: Hem arabada hem yatta" [ref=e1279] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/guncel/2026/04/18/ozkan-yalimin-sevgilileriyle-goruntuleri-sizdi-hem-arabada-hem-yatta
+        - 'link "Özkan Yalım’ın sevgilileriyle görüntüleri sızdı: Hem arabada hem yatta" [ref=e1281] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/guncel/2026/04/18/ozkan-yalimin-sevgilileriyle-goruntuleri-sizdi-hem-arabada-hem-yatta
+          - generic [ref=e1282]: Yalım'ın görüntüleri sızdı
+      - 'figure "Oyun değil suç şebekesi: Milyonluk kanallar kapatıldı | Discord ve Youtube’daki gizli tehlikeler" [ref=e1284]':
+        - 'link "Oyun değil suç şebekesi: Milyonluk kanallar kapatıldı | Discord ve Youtube’daki gizli tehlikeler" [ref=e1285] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/guncel/2026/04/18/oyun-degil-suc-sebekesi-milyonluk-kanallar-kapatildi-discord-ve-youtubedaki-gizli-tehlikeler
+        - 'link "Oyun değil suç şebekesi: Milyonluk kanallar kapatıldı | Discord ve Youtube’daki gizli tehlikeler" [ref=e1287] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/guncel/2026/04/18/oyun-degil-suc-sebekesi-milyonluk-kanallar-kapatildi-discord-ve-youtubedaki-gizli-tehlikeler
+          - generic [ref=e1288]: Dijital bağımlılık şiddeti büyüttü
+      - 'figure "Televizyon yayıncılarından ortak görüş: Her türlü şiddet ve dezenformasyonun kol gezdiği dijital mecralar denetlenmeli" [ref=e1290]':
+        - 'link "Televizyon yayıncılarından ortak görüş: Her türlü şiddet ve dezenformasyonun kol gezdiği dijital mecralar denetlenmeli" [ref=e1291] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/guncel/2026/04/18/turkiyenin-tv-yayincilarindan-ortak-gorus-her-turlu-siddet-ve-dezenformasyonun-kol-gezdigi-dijital-mecralar-denetlenmeli
+        - 'link "Televizyon yayıncılarından ortak görüş: Her türlü şiddet ve dezenformasyonun kol gezdiği dijital mecralar denetlenmeli" [ref=e1293] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/guncel/2026/04/18/turkiyenin-tv-yayincilarindan-ortak-gorus-her-turlu-siddet-ve-dezenformasyonun-kol-gezdigi-dijital-mecralar-denetlenmeli
+          - generic [ref=e1294]: TV yayıncılarından ortak ses
+      - generic [ref=e1297]:
+        - group "1 / 4" [ref=e1298]:
+          - link [ref=e1299] [cursor=pointer]:
+            - /url: https://egazete.takvim.com.tr
+        - group "2 / 4" [ref=e1300]:
+          - link [ref=e1301] [cursor=pointer]:
+            - /url: https://egazete.fotomac.com.tr
+        - group "3 / 4" [ref=e1302]:
+          - link [ref=e1303] [cursor=pointer]:
+            - /url: https://egazete.yeniasir.com.tr
+        - group "4 / 4" [ref=e1304]:
+          - link [ref=e1305] [cursor=pointer]:
+            - /url: https://egazete.sabah.com.tr
+      - 'figure "Paris''teki Hürmüz zirvesinde gündem Macron: Meloni''yi şaşırtan öpücük" [ref=e1307]':
+        - 'link "Paris''teki Hürmüz zirvesinde gündem Macron: Meloni''yi şaşırtan öpücük" [ref=e1308] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/dunya/paristeki-hurmuz-zirvesinde-gundem-macron-meloniyi-sasirtan-opucuk-6412730
+        - 'link "Paris''teki Hürmüz zirvesinde gündem Macron: Meloni''yi şaşırtan öpücük" [ref=e1310] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/dunya/paristeki-hurmuz-zirvesinde-gundem-macron-meloniyi-sasirtan-opucuk-6412730
+          - generic [ref=e1311]: Meloni'yi şaşırtan öpücük
+      - 'figure "Ulusaşırı dijital teröre geçit yok! AK Partili Hüseyin Yayman mesajı verdi: Daha sert tedbirlerle kontrol altına almamız lazım" [ref=e1313]':
+        - 'link "Ulusaşırı dijital teröre geçit yok! AK Partili Hüseyin Yayman mesajı verdi: Daha sert tedbirlerle kontrol altına almamız lazım" [ref=e1314] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/guncel/2026/04/19/ak-partili-huseyin-yaymandan-sosyal-medya-mesaji
+          - generic: DİJİTAL RADİKALLEŞMEYE GEÇİT YOK!
+        - 'link "Ulusaşırı dijital teröre geçit yok! AK Partili Hüseyin Yayman mesajı verdi: Daha sert tedbirlerle kontrol altına almamız lazım" [ref=e1316] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/guncel/2026/04/19/ak-partili-huseyin-yaymandan-sosyal-medya-mesaji
+          - generic [ref=e1317]: "\"Kapatmamız gerekiyorsa kapatacağız\""
+      - 'figure "CHP''li Ataşehir Belediyesi''ne rüşvet operasyonu: Onursal Adıgüzel gözaltında | 7 milyonluk pazarlık teknik dinlemede" [ref=e1319]':
+        - 'link "CHP''li Ataşehir Belediyesi''ne rüşvet operasyonu: Onursal Adıgüzel gözaltında | 7 milyonluk pazarlık teknik dinlemede" [ref=e1320] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/guncel/2026/04/18/chpli-atasehir-belediyesine-operasyon-arama-ve-el-koyma-karari
+        - 'link "CHP''li Ataşehir Belediyesi''ne rüşvet operasyonu: Onursal Adıgüzel gözaltında | 7 milyonluk pazarlık teknik dinlemede" [ref=e1322] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/guncel/2026/04/18/chpli-atasehir-belediyesine-operasyon-arama-ve-el-koyma-karari
+          - generic [ref=e1323]: CHP'li Ataşehir Belediyesi'ne operasyon
+      - 'figure "Zehir şebekesinin \"Panama\" oyunu bozuldu: 500 milyonluk uyuşturucu sokaklara ulaşmadan yakalandı" [ref=e1325]':
+        - 'link "Zehir şebekesinin \"Panama\" oyunu bozuldu: 500 milyonluk uyuşturucu sokaklara ulaşmadan yakalandı" [ref=e1326] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/guncel/2026/04/18/zehir-sebekesinin-panama-oyunu-bozuldu-500-milyonluk-uyusturucu-sokaklara-ulasmadan-yakalandi
+          - generic: 106 KİLO KOKAİN ELE GEÇİRİLDİ
+        - 'link "Zehir şebekesinin \"Panama\" oyunu bozuldu: 500 milyonluk uyuşturucu sokaklara ulaşmadan yakalandı" [ref=e1328] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/guncel/2026/04/18/zehir-sebekesinin-panama-oyunu-bozuldu-500-milyonluk-uyusturucu-sokaklara-ulasmadan-yakalandi
+          - generic [ref=e1329]: Zehir şebekesinin "Panama" oyunu bozuldu
+      - figure "Cimbom'un zirve keyfi! Galatasaray Gençlerbirliği'ni 2-1 mağlup etti" [ref=e1331]:
+        - link "Cimbom'un zirve keyfi! Galatasaray Gençlerbirliği'ni 2-1 mağlup etti" [ref=e1332] [cursor=pointer]:
+          - /url: https://www.takvim.com.tr/galatasaray/2026/04/18/cimbomun-zirve-keyfi-galatasaray-genclerbirligini-2-1-maglup-etti
+        - link "Cimbom'un zirve keyfi! Galatasaray Gençlerbirliği'ni 2-1 mağlup etti" [ref=e1334] [cursor=pointer]:
+          - /url: https://www.takvim.com.tr/galatasaray/2026/04/18/cimbomun-zirve-keyfi-galatasaray-genclerbirligini-2-1-maglup-etti
+          - generic [ref=e1335]: Aslan'dan zirvede hata yok
+      - 'figure "Şişli''de metruk binada ceset bulundu: Ölümü şüpheli raporlandı | 15 suç kaydı" [ref=e1337]':
+        - 'link "Şişli''de metruk binada ceset bulundu: Ölümü şüpheli raporlandı | 15 suç kaydı" [ref=e1338] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/yasam/2026/04/18/sislide-metruk-binada-ceset-bulundu-olumu-supheli-raporlandi-15-suc-kaydi
+          - generic: 15 AYRI SUÇ KAYDI
+        - 'link "Şişli''de metruk binada ceset bulundu: Ölümü şüpheli raporlandı | 15 suç kaydı" [ref=e1340] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/yasam/2026/04/18/sislide-metruk-binada-ceset-bulundu-olumu-supheli-raporlandi-15-suc-kaydi
+          - generic [ref=e1341]: Metruk binada ceset bulundu
+      - 'figure "CHP''li Balıkesir Belediyesi’nin gıda ihalesinde \"Ağrı\" bilmecesi: Bin 550 kilometre ötedeki bakkala 22 milyon TL!" [ref=e1343]':
+        - 'link "CHP''li Balıkesir Belediyesi’nin gıda ihalesinde \"Ağrı\" bilmecesi: Bin 550 kilometre ötedeki bakkala 22 milyon TL!" [ref=e1344] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/guncel/2026/04/18/chpli-balikesir-belediyesinin-gida-ihalesinde-agri-bilmecesi-bin-550-kilometre-otedeki-bakkala-22-milyon-tl
+        - 'link "CHP''li Balıkesir Belediyesi’nin gıda ihalesinde \"Ağrı\" bilmecesi: Bin 550 kilometre ötedeki bakkala 22 milyon TL!" [ref=e1346] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/guncel/2026/04/18/chpli-balikesir-belediyesinin-gida-ihalesinde-agri-bilmecesi-bin-550-kilometre-otedeki-bakkala-22-milyon-tl
+          - generic [ref=e1347]: Ballı ihale
+      - 'figure "Çocuk kanalı kılıfıyla ahlaksızlık diz boyu | TAKVİM manşet manşet mercek altına aldı: \"Kucağına attı kızı farkında mısın?\"" [ref=e1349]':
+        - 'link "Çocuk kanalı kılıfıyla ahlaksızlık diz boyu | TAKVİM manşet manşet mercek altına aldı: \"Kucağına attı kızı farkında mısın?\"" [ref=e1350] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/guncel/2026/04/17/cocuk-kanali-kilifiyla-ahlaksizlik-diz-boyu-takvim-manset-manset-mercek-altina-aldi-kucagina-atti-kizi-farkinda-misin
+        - 'link "Çocuk kanalı kılıfıyla ahlaksızlık diz boyu | TAKVİM manşet manşet mercek altına aldı: \"Kucağına attı kızı farkında mısın?\"" [ref=e1352] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/guncel/2026/04/17/cocuk-kanali-kilifiyla-ahlaksizlik-diz-boyu-takvim-manset-manset-mercek-altina-aldi-kucagina-atti-kizi-farkinda-misin
+          - generic [ref=e1353]: Çocuk kanalı kılıfıyla ahlaksızlık diz boyu
+      - 'figure "Nazilli Fen Lisesi Yurdunda yangın: 46 öğrenci tahliye edildi" [ref=e1355]':
+        - 'link "Nazilli Fen Lisesi Yurdunda yangın: 46 öğrenci tahliye edildi" [ref=e1356] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/yasam/2026/04/18/nazilli-fen-lisesi-yurdunda-yangin-46-ogrenci-tahliye-edildi
+          - generic: EKİPLER OLAY YERİNDE
+        - 'link "Nazilli Fen Lisesi Yurdunda yangın: 46 öğrenci tahliye edildi" [ref=e1358] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/yasam/2026/04/18/nazilli-fen-lisesi-yurdunda-yangin-46-ogrenci-tahliye-edildi
+          - generic [ref=e1359]: Lise yurdunda yangın
+      - 'figure "Kozmik turuncu gidiyor koyu kiraz geliyor: iPhone 18 hangi renk? İşte Apple’ın 2026 paleti" [ref=e1361]':
+        - 'link "Kozmik turuncu gidiyor koyu kiraz geliyor: iPhone 18 hangi renk? İşte Apple’ın 2026 paleti" [ref=e1362] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/teknoloji/kozmik-turuncu-gidiyor-koyu-kiraz-geliyor-iphone-18-hangi-renk-iste-applein-2026-paleti-6412768
+          - generic: APPLE'DAN YENİ RENK PALETİ
+        - 'link "Kozmik turuncu gidiyor koyu kiraz geliyor: iPhone 18 hangi renk? İşte Apple’ın 2026 paleti" [ref=e1364] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/teknoloji/kozmik-turuncu-gidiyor-koyu-kiraz-geliyor-iphone-18-hangi-renk-iste-applein-2026-paleti-6412768
+          - generic [ref=e1365]: Kozmik turuncu yerine koyu kiraz!
+      - 'figure "14 yılda 10 milyon vatandaşa güvenli yuva: Kentsel dönüşümde tarihi eşik aşıldı" [ref=e1367]':
+        - 'link "14 yılda 10 milyon vatandaşa güvenli yuva: Kentsel dönüşümde tarihi eşik aşıldı" [ref=e1368] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/ekonomi/2026/04/20/14-yilda-10-milyon-vatandasa-guvenli-yuva-kentsel-donusumde-tarihi-esik-asildi
+        - 'link "14 yılda 10 milyon vatandaşa güvenli yuva: Kentsel dönüşümde tarihi eşik aşıldı" [ref=e1370] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/ekonomi/2026/04/20/14-yilda-10-milyon-vatandasa-guvenli-yuva-kentsel-donusumde-tarihi-esik-asildi
+          - generic [ref=e1371]: Kentsel dönüşüme 205 milyar TL destek
+      - 'figure "Fenerbahçe''ye ağır eleştiri: Futbol enayiliği desem enayilere hakaret olur" [ref=e1373]':
+        - 'link "Fenerbahçe''ye ağır eleştiri: Futbol enayiliği desem enayilere hakaret olur" [ref=e1374] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/spor/2026/04/18/fenerbahceye-agir-elestiri-futbol-enayiligi-desem-enayilere-hakaret-olur
+        - 'link "Fenerbahçe''ye ağır eleştiri: Futbol enayiliği desem enayilere hakaret olur" [ref=e1376] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/spor/2026/04/18/fenerbahceye-agir-elestiri-futbol-enayiligi-desem-enayilere-hakaret-olur
+          - generic [ref=e1377]: "\"Futbol enayiliği\""
+      - 'figure "CIA aparatı Rubin’den alçak çağrı: Erdoğan yokken vurun!" [ref=e1379]':
+        - 'link "CIA aparatı Rubin’den alçak çağrı: Erdoğan yokken vurun!" [ref=e1380] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/guncel/2026/04/17/cia-aparati-rubinden-alcak-cagri-erdogan-yokken-vurun
+        - 'link "CIA aparatı Rubin’den alçak çağrı: Erdoğan yokken vurun!" [ref=e1382] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/guncel/2026/04/17/cia-aparati-rubinden-alcak-cagri-erdogan-yokken-vurun
+          - generic [ref=e1383]: CIA aparatı Rubin’den alçak çağrı
+      - 'figure "Emekli zammı için ipucu geldi: Yeni taban maaş ne kadar olacak? Kuruşu kuruşuna hesaplama" [ref=e1385]':
+        - 'link "Emekli zammı için ipucu geldi: Yeni taban maaş ne kadar olacak? Kuruşu kuruşuna hesaplama" [ref=e1386] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/ekonomi/2026/04/18/emekli-zammi-icin-ipucu-geldi-yeni-taban-maas-ne-kadar-olacak-kurusu-kurusuna-hesaplama
+          - generic: TABAN MAAŞ NE KADAR OLACAK?
+        - 'link "Emekli zammı için ipucu geldi: Yeni taban maaş ne kadar olacak? Kuruşu kuruşuna hesaplama" [ref=e1388] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/ekonomi/2026/04/18/emekli-zammi-icin-ipucu-geldi-yeni-taban-maas-ne-kadar-olacak-kurusu-kurusuna-hesaplama
+          - generic [ref=e1389]: Emekli zammı için ipucu geldi!
+      - figure "İstanbul'da kritik zafer! Fatih Karagümrük Eyüpspor'u 2-1 yendi" [ref=e1391]:
+        - link "İstanbul'da kritik zafer! Fatih Karagümrük Eyüpspor'u 2-1 yendi" [ref=e1392] [cursor=pointer]:
+          - /url: https://www.takvim.com.tr/superlig/2026/04/18/istanbulda-kritik-zafer-fatih-karagumruk-eyupsporu-2-1-yendi
+          - generic: NEFES KESEN MAÇ
+        - link "İstanbul'da kritik zafer! Fatih Karagümrük Eyüpspor'u 2-1 yendi" [ref=e1394] [cursor=pointer]:
+          - /url: https://www.takvim.com.tr/superlig/2026/04/18/istanbulda-kritik-zafer-fatih-karagumruk-eyupsporu-2-1-yendi
+          - generic [ref=e1395]: Küme düşme hattında hayati zafer
+      - 'figure "Meteoroloji''den 17 ile kritik uyarı: Atkıları sarın şemsiyeleri hazırlayın" [ref=e1397]':
+        - 'link "Meteoroloji''den 17 ile kritik uyarı: Atkıları sarın şemsiyeleri hazırlayın" [ref=e1398] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/meteoroloji/2026/04/18/meteorolojiden-19-ile-kritik-uyari-atkilari-sarin-semsiyeleri-hazirlayin-kuvvetli-saganak-geliyor
+          - generic: ATKI ŞEMSİYE HAZIR OLSUN
+        - 'link "Meteoroloji''den 17 ile kritik uyarı: Atkıları sarın şemsiyeleri hazırlayın" [ref=e1400] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/meteoroloji/2026/04/18/meteorolojiden-19-ile-kritik-uyari-atkilari-sarin-semsiyeleri-hazirlayin-kuvvetli-saganak-geliyor
+          - generic [ref=e1401]: Meteoroloji'den 17 ile kritik uyarı!
+      - figure "Galatasaray'dan iptal edilen Sane golüne sert tepki! Resmi hesaptan flaş paylaşım" [ref=e1403]:
+        - link "Galatasaray'dan iptal edilen Sane golüne sert tepki! Resmi hesaptan flaş paylaşım" [ref=e1404] [cursor=pointer]:
+          - /url: https://www.takvim.com.tr/galatasaray/2026/04/18/galatasaraydan-iptal-edilen-sane-golune-sert-tepki-resmi-hesaptan-flas-paylasim
+          - generic: "\"ENDER GÖRÜLEN ŞEKİLDE\""
+        - link "Galatasaray'dan iptal edilen Sane golüne sert tepki! Resmi hesaptan flaş paylaşım" [ref=e1406] [cursor=pointer]:
+          - /url: https://www.takvim.com.tr/galatasaray/2026/04/18/galatasaraydan-iptal-edilen-sane-golune-sert-tepki-resmi-hesaptan-flas-paylasim
+          - generic [ref=e1407]: Galatasaray'dan sayılmayan gol için tepki!
+      - 'figure "Korkulu rüya değil doğal bir süreç: Menopoz hakkında doğru bilinen yanlışlar" [ref=e1409]':
+        - 'link "Korkulu rüya değil doğal bir süreç: Menopoz hakkında doğru bilinen yanlışlar" [ref=e1410] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/saglik/korkulu-ruya-degil-dogal-bir-surec-menopoz-hakkinda-dogru-bilinen-yanlislar-6413122
+        - 'link "Korkulu rüya değil doğal bir süreç: Menopoz hakkında doğru bilinen yanlışlar" [ref=e1412] [cursor=pointer]':
+          - /url: https://www.takvim.com.tr/saglik/korkulu-ruya-degil-dogal-bir-surec-menopoz-hakkinda-dogru-bilinen-yanlislar-6413122
+          - generic [ref=e1413]: Eyvah menopoz
+      - figure "Kocaelispor 90+8'de puanı kaptı! Göztepe'ye son anda şok" [ref=e1415]:
+        - link "Kocaelispor 90+8'de puanı kaptı! Göztepe'ye son anda şok" [ref=e1416] [cursor=pointer]:
+          - /url: https://www.takvim.com.tr/superlig/2026/04/18/kocaelispor-908de-puani-kapti-goztepeye-son-anda-sok
+          - generic: YILDIZ GOLCÜ SAHNEYE ÇIKTI
+        - link "Kocaelispor 90+8'de puanı kaptı! Göztepe'ye son anda şok" [ref=e1418] [cursor=pointer]:
+          - /url: https://www.takvim.com.tr/superlig/2026/04/18/kocaelispor-908de-puani-kapti-goztepeye-son-anda-sok
+          - generic [ref=e1419]: 90+8'de kader değiştiren vuruş
+      - figure "Adana'da sulama kanalına giren 16 yaşındaki çocuk akıntıya kapılarak kayboldu" [ref=e1421]:
+        - link "Adana'da sulama kanalına giren 16 yaşındaki çocuk akıntıya kapılarak kayboldu" [ref=e1422] [cursor=pointer]:
+          - /url: https://www.takvim.com.tr/yasam/2026/04/18/adanada-sulama-kanalina-giren-16-yasindaki-cocuk-akintiya-kapilarak-kayboldu
+          - generic: ARAMA ÇALIŞMASI SÜRÜYOR
+        - link "Adana'da sulama kanalına giren 16 yaşındaki çocuk akıntıya kapılarak kayboldu" [ref=e1424] [cursor=pointer]:
+          - /url: https://www.takvim.com.tr/yasam/2026/04/18/adanada-sulama-kanalina-giren-16-yasindaki-cocuk-akintiya-kapilarak-kayboldu
+          - generic [ref=e1425]: Serinlemek isterken akıntıya kapıldı
+    - generic [ref=e1426]:
+      - list [ref=e1427]:
+        - listitem [ref=e1428]:
+          - link "Benzine ve motorine indirim var mı? 18 Nisan 2026 İzmir, İstanbul, Ankara akaryakıt fiyatları..." [ref=e1429] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/haberler/2026/04/18/motorine-indirim-geldi-tabela-degisti-16-nisan-2026-izmir-istanbul-ankara-akaryakit-fiyatlari
+            - generic [ref=e1430]: Benzine ve motorine indirim var mı? 18 Nisan 2026 İzmir, İstanbul, Ankara akaryakıt fiyatları...
+        - listitem [ref=e1431]:
+          - 'link "NASA’dan kozmik atom karınca: Gezegenler arası uzay aracı nasıl çalışıyor?" [ref=e1432] [cursor=pointer]':
+            - /url: https://www.takvim.com.tr/galeri/dunya/nasadan-kozmik-atom-karinca-gezegenler-arasi-uzay-araci-nasil-calisiyor
+            - generic [ref=e1433]: "NASA'dan kozmik atom karınca: Gezegenler arası uzay aracı nasıl çalışıyor?"
+        - listitem [ref=e1434]:
+          - 'link "Hayvan otlatırken tarlada 2 bin 500 yıllık miras buldu: Müzede yerini aldı" [ref=e1435] [cursor=pointer]':
+            - /url: https://www.takvim.com.tr/yasam/2026/04/02/hayvan-otlatirken-tarlada-2-bin-500-yillik-miras-buldu-muzede-yerini-aldi
+            - generic [ref=e1436]: "Hayvan otlatırken tarlada 2 bin 500 yıllık miras buldu: Müzede yerini aldı"
+        - listitem [ref=e1437]:
+          - 'link "Gökyüzündeki istasyon iptal: NASA’nın yeni planı belli oldu" [ref=e1438] [cursor=pointer]':
+            - /url: https://www.takvim.com.tr/dunya/gokyuzundeki-istasyon-iptal-nasanin-yeni-plani-belli-oldu-6396446
+            - generic [ref=e1439]: "Gökyüzündeki istasyon iptal: NASA'nın yeni planı belli oldu"
+      - list [ref=e1440]:
+        - listitem [ref=e1441]:
+          - 'link "Nevruz Bayramı mesajları: Resimli Nevruz mesajları kısa, uzun tebrik sözleri" [ref=e1442] [cursor=pointer]':
+            - /url: https://www.takvim.com.tr/galeri/yasam/nevruz-bayrami-mesajlari-resimli-nevruz-mesajlari-kisa-uzun-tebrik-sozleri
+            - generic [ref=e1443]: "Nevruz Bayramı mesajları: Resimli Nevruz mesajları kısa, uzun tebrik sözleri"
+        - listitem [ref=e1444]:
+          - link "Bayramlık filmi bu akşam atv’de! Bayramlık filmi konusu ne, oyuncuları kimler?" [ref=e1445] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/televizyon/2026/03/20/bayramlik-filmi-bu-aksam-atvde-bayramlik-filmi-konusu-ne-oyunculari-kimler
+            - generic [ref=e1446]: Bayramlık filmi bu akşam atv'de! Bayramlık filmi konusu ne, oyuncuları kimler?
+        - listitem [ref=e1447]:
+          - 'link "Piyasada haftanın özeti: Altın ve döviz kurunda son durum ne?" [ref=e1448] [cursor=pointer]':
+            - /url: https://www.takvim.com.tr/ekonomi/2026/03/28/bugun-altin-ne-kadar-oldu-canli-altin-fiyatlari-gram-ceyrek-yarim-tam
+            - generic [ref=e1449]: "Piyasada haftanın özeti: Altın ve döviz kurunda son durum ne?"
+        - listitem [ref=e1450]:
+          - 'link "Arife tahtından bayram alayına: Osmanlı’nın bayram gelenekleri" [ref=e1451] [cursor=pointer]':
+            - /url: https://www.takvim.com.tr/galeri/yasam/arife-tahtindan-bayram-alayina-osmanlinin-bayram-gelenekleri
+            - generic [ref=e1452]: "Arife tahtından bayram alayına: Osmanlı’nın bayram gelenekleri"
+      - list [ref=e1453]:
+        - listitem [ref=e1454]:
+          - 'link "Galaksinin en kirli gezegeni bulundu: Hem erimiş halde hem de zehir soluyor" [ref=e1455] [cursor=pointer]':
+            - /url: https://www.takvim.com.tr/dunya/evrenin-en-pis-kokulu-gezegeni-bulundu-yuzeyi-tamamen-erimis-halde-6389567
+            - generic [ref=e1456]: "Galaksinin en kirli gezegeni bulundu: Hem erimiş halde hem de zehir soluyor"
+        - listitem [ref=e1457]:
+          - 'link "18 Mart rehberi: En güzel şiirler, ücretsiz müze ve etkinlikler tam liste" [ref=e1458] [cursor=pointer]':
+            - /url: https://www.takvim.com.tr/yasam/2026/03/18/18-mart-rehberi-en-guzel-siirler-ucretsiz-muze-ve-etkinlikler-tam-liste
+            - generic [ref=e1459]: "18 Mart rehberi: En güzel şiirler, ücretsiz müze ve etkinlikler tam liste"
+        - listitem [ref=e1460]:
+          - 'link "Yıldırımın peşini bırakmadığı adam: Roy Sullivan’ın akıl almaz hikayesi" [ref=e1461] [cursor=pointer]':
+            - /url: https://www.takvim.com.tr/galeri/yasam/yildirimin-pesini-birakmadigi-adam-roy-sullivanin-akil-almaz-hikayesi
+            - generic [ref=e1462]: "Yıldırımın peşini bırakmadığı adam: Roy Sullivan’ın akıl almaz hikayesi"
+        - listitem [ref=e1463]:
+          - 'link "Bilimsel veri ortaya çıktı: Akraba stresi DNA’yı bitiriyor" [ref=e1464] [cursor=pointer]':
+            - /url: https://www.takvim.com.tr/galeri/yasam/bilimsel-veri-ortaya-cikti-akraba-stresi-dnayi-bitiriyor
+            - generic [ref=e1465]: "Bilimsel veri ortaya çıktı: Akraba stresi DNA’yı bitiriyor"
+  - contentinfo [ref=e1466]:
+    - generic [ref=e1468]:
+      - link "Takvim Haber - Son Dakika Haberler, Güncel Gazete Haberleri" [ref=e1469] [cursor=pointer]:
+        - /url: https://www.takvim.com.tr
+        - img "Takvim Haber - Son Dakika Haberler, Güncel Gazete Haberleri" [ref=e1470]
+      - generic [ref=e1471]:
+        - link "Apple Appstore" [ref=e1472] [cursor=pointer]:
+          - /url: https://apps.apple.com/tr/app/takvim-son-dakika-haberleri/id409367985
+          - img "app-store" [ref=e1473]
+        - link "Google Play" [ref=e1474] [cursor=pointer]:
+          - /url: https://play.google.com/store/apps/details?id=com.turkuvaz.takvim
+          - img "google-play" [ref=e1475]
+        - link "Appgallery" [ref=e1476] [cursor=pointer]:
+          - /url: https://appgallery.huawei.com/app/C101556527
+          - img "appgallery" [ref=e1477]
+      - list [ref=e1478]:
+        - listitem [ref=e1479]:
+          - link "facebook" [ref=e1480] [cursor=pointer]:
+            - /url: https://www.facebook.com/takvim
+            - img "facebook" [ref=e1481]
+        - listitem [ref=e1482]:
+          - link "x" [ref=e1483] [cursor=pointer]:
+            - /url: https://x.com/takvim
+            - img "X" [ref=e1484]
+        - listitem [ref=e1485]:
+          - link "youtube" [ref=e1486] [cursor=pointer]:
+            - /url: https://www.youtube.com/takvim
+            - img "youtube" [ref=e1487]
+        - listitem [ref=e1488]:
+          - link "instagram" [ref=e1489] [cursor=pointer]:
+            - /url: https://www.instagram.com/takvim
+            - img "instagram" [ref=e1490]
+        - listitem [ref=e1491]:
+          - link "rss" [ref=e1492] [cursor=pointer]:
+            - /url: https://www.takvim.com.tr/rss-bilgi
+            - img "rss" [ref=e1493]
+      - list [ref=e1494]:
+        - listitem [ref=e1495]:
+          - button "Üye Girişi" [ref=e1496] [cursor=pointer]
+        - listitem [ref=e1497]:
+          - button "Üye Ol" [ref=e1498] [cursor=pointer]
+    - generic [ref=e1500]:
+      - list [ref=e1501]:
+        - listitem [ref=e1502]:
+          - link "Son Dakika Haberleri" [ref=e1503] [cursor=pointer]:
+            - /url: /son-dakika-haberleri
+        - listitem [ref=e1504]:
+          - link "Güncel" [ref=e1505] [cursor=pointer]:
+            - /url: /guncel
+        - listitem [ref=e1506]:
+          - link "Ekonomi Haberleri" [ref=e1507] [cursor=pointer]:
+            - /url: /ekonomi
+        - listitem [ref=e1508]:
+          - link "Magazin Haberleri" [ref=e1509] [cursor=pointer]:
+            - /url: /magazin
+        - listitem [ref=e1510]:
+          - link "Spor Haberleri" [ref=e1511] [cursor=pointer]:
+            - /url: /spor
+        - listitem [ref=e1512]:
+          - link "Emekli Haberleri" [ref=e1513] [cursor=pointer]:
+            - /url: /arama/arsiv?query=emekli&sort=createddatereal&categorytype=
+        - listitem [ref=e1514]:
+          - link "Namaz Vakitleri" [ref=e1515] [cursor=pointer]:
+            - /url: /namaz-vakitleri
+        - listitem [ref=e1516]:
+          - link "Hava Durumu Tüm İller" [ref=e1517] [cursor=pointer]:
+            - /url: /hava-durumu
+        - listitem [ref=e1518]:
+          - link "Sağlık" [ref=e1519] [cursor=pointer]:
+            - /url: /saglik
+      - list [ref=e1520]:
+        - listitem [ref=e1521]:
+          - link "Astroloji" [ref=e1522] [cursor=pointer]:
+            - /url: /astroloji
+        - listitem [ref=e1523]:
+          - link "Memur" [ref=e1524] [cursor=pointer]:
+            - /url: /memur
+        - listitem [ref=e1525]:
+          - link "Yerel Haberler" [ref=e1526] [cursor=pointer]:
+            - /url: /yerel-haberler
+        - listitem [ref=e1527]:
+          - link "Video" [ref=e1528] [cursor=pointer]:
+            - /url: /video
+        - listitem [ref=e1529]:
+          - link "Otomobil" [ref=e1530] [cursor=pointer]:
+            - /url: /otomobil
+        - listitem [ref=e1531]:
+          - link "Galeri" [ref=e1532] [cursor=pointer]:
+            - /url: /galeri
+        - listitem [ref=e1533]:
+          - link "E-Gazete" [ref=e1534] [cursor=pointer]:
+            - /url: https://egazete.takvim.com.tr
+        - listitem [ref=e1535]:
+          - link "Iphone" [ref=e1536] [cursor=pointer]:
+            - /url: https://apps.apple.com/ke/app/takvim-son-dakika-haberleri/id409367985
+        - listitem [ref=e1537]:
+          - link "Rss" [ref=e1538] [cursor=pointer]:
+            - /url: /rss-bilgi
+      - list [ref=e1539]:
+        - listitem [ref=e1540]:
+          - link "Gizlilik Bildirimi" [ref=e1541] [cursor=pointer]:
+            - /url: /gizlilik-bildirimi
+        - listitem [ref=e1542]:
+          - link "Künye/İletişim" [ref=e1543] [cursor=pointer]:
+            - /url: /kunye
+        - listitem [ref=e1544]:
+          - link "Kariyer" [ref=e1545] [cursor=pointer]:
+            - /url: /kariyer/is-basvuru
+      - generic [ref=e1546]:
+        - text: Günün Takvim Gazetesi
+        - link "egazete" [ref=e1547] [cursor=pointer]:
+          - /url: https://egazete.takvim.com.tr
+          - img "egazete" [ref=e1548]
+  - generic [ref=e1551]:
+    - text: 6698 sayılı Kişisel Verilerin Korunması Kanunu uyarınca hazırlanmış aydınlatma metnimizi okumak ve sitemizde ilgili mevzuata uygun olarak kullanılan
+    - link "çerezlerle" [ref=e1552] [cursor=pointer]:
+      - /url: /veri-politikasi#cookies
+    - text: ilgili bilgi almak için lütfen
+    - link "tıklayınız." [ref=e1553] [cursor=pointer]:
+      - /url: /veri-politikasi#privacy
+  - iframe [ref=e1558]:
+    - link [ref=f20e2] [cursor=pointer]:
+      - /url: https://googleads.g.doubleclick.net/pcs/click?xai=AKAOjstZd1iTUUDqWth6EKvkfi2HlZkPkcmvFFX16Wlli-0xF-FDr-RBAwcO6S7CA3vA4skGlnIcrKlJqeiFciX5qQ9duNOLwbbdaXUuvravGl2KzEN4IPRV1kj4U2CaJ5IEkwO7QTck_cfhA9BhT4W-7RSwmCgPRPoMxen22xQW9NwlJ07nW6qLNTxsPxtGqsjL9-zH0KbcxWd4Vh1tKATbHVJdUL44GPNMaa-ZIxyeBODM0X7ajC6PxDG5ADWz3FRW2IZQ56IS_jSM-s_OJzL7DGAmK3fF_yZZhXHbdt0_K6JJIXez8VWZIorVah8cFMFxn-qyflpMqwchMhGxT2G-q6v24nlX8PbtbD8OQLsp7SQrAM0Jodq9KSGyJbJW9WQK0syrZ7rx2lr7l3SrNb83nPt4niYm0zJ4aoHyMv4QqMI11siniok&sai=AMfl-YSgf-Y9PIJTwZHG_tUdSOHMJPxkmszJonnck8G00V1IAg2tUfXFU1hM8Se2Dg_NppDjC3w-w0wwgECXKWAYSQdxjsbe5os_luAu8wINVJ4EeenyS0nuOVLWJNZifsyR0RrCGkY-KUwWp5aIK9JRl8fHX9mw-HR7KwvREo-OPRQCPMOXFSpL46IlXfoIJXpvmuW8jCJcVPrcCkn_EPQxNOai0aiPZdJyiB75JLKbS3WY8DhygX_9SNzCaKVT9_y97or_dwin-jq50wH0IvEgNFeduz6b_SX-pDN2ds3IKfUN2zm45q9doeaCq54jyDqvkcH-x2qzsFftyil_8yvSyo7fU9VHDDpOn7tGKM5RO49rJw4h0J2tFxAf&sig=Cg0ArKJSzKP4Ya9UONCe&fbs_aeid=%5Bgw_fbsaeid%5D&adurl=https://d-r.im/a/L6RUH
+  - iframe [ref=e1561]:
+    - link [ref=f21e2] [cursor=pointer]:
+      - /url: https://googleads.g.doubleclick.net/pcs/click?xai=AKAOjsuRmbYzN-_L4b10yo2BBKwrvIP8l1nAkdHbezbinjvS1_DMQWLhC6Iflo0mAvmkhMZhw9HpgTWf1T8AtLExlr581DW8E20ZB10Wg_0R-jq_0EOzsZ_9nd5bAzL_Tq9gayQn9BfF3JQBnl4sb68pLLqO46AGCA7CH0dShQpqk45boCHABXGsxfPEp8W7jr4GFnWsrvRQeoB7czH2VZMiFNtDUXOjPM8O7Jb-XE3TzHHc3ZoX-sGX8JEYeqaxmPRvizdAgoZGjpOf8zQuggbPFXmmPD0h8lixZpvtkFUV5C5apDMdmeRq2tUI_TqYCSk9Mp81HBz92bigAi-33bI6f9D9xEtgOmrIADMIN2DlBkKHHwZpdfM9QT3R9-pQCdIPF2KcAgdE3Cu2iLuEBltlcSWpsMxwHUFGpOeGniUc9mKRXeZ0l_XCmsDrpv2NB80&sai=AMfl-YTfxtGY15noxcVOD3n4n1bo_RE5hyAfSGMddjz0bqQk4GPjAxEhvYLlWDQpT7k2_toRyJPixt6TaLo7vs4yg_A5x7nOygHr3tuhPYgAMCGPzqRMljwjcsnuKkmZJW3N8ExTNwSpSvFd8hqMoQEjOl9eIg9D0Ntm8mnZ2GTp4e2XT-RfwvUORnYtaupN7rQK6eUF6XmNGvcy35tUCOf3qvEXYEH_q7iMjoN91dSnf9zbhNphqil-5ClN0ArmJi4KM0YINqOpROKU8KJydRpiBN0jfh-9iPYHSIILs5ul8b629vkzRZukAxpD5NvXxUJx38UlsaZKx7BgpJwEXGrW-GEi7OwolgtOkGXFgg66SYTG4KYpL2sTIr3i&sig=Cg0ArKJSzJUG-iJY3wGH&fbs_aeid=%5Bgw_fbsaeid%5D&adurl=https://d-r.im/a/L6RUH
+```
+
+# Test source
+
+```ts
+  1  | const { test, expect } = require('@playwright/test');
+  2  | 
+  3  | const URL1 = process.env.URL1 || 'https://www.takvim.com.tr/';
+  4  | const URL2 = process.env.URL2 || URL1;
+  5  | 
+  6  | async function loadPage(page, url) {
+  7  |   await page.goto(url, { waitUntil: 'load', timeout: 60000 });
+  8  |   await page.waitForTimeout(2000);
+  9  | }
+  10 | 
+  11 | // --update-snapshots → URL1'i baseline olarak kaydet
+  12 | // Normal run        → URL2'yi URL1 baseline'ıyla karşılaştır
+  13 | function getUrl(isUpdate) {
+  14 |   return isUpdate ? URL1 : URL2;
+  15 | }
+  16 | 
+  17 | test('Anasayfa - Tam Sayfa', async ({ page }, testInfo) => {
+  18 |   const url = getUrl(testInfo.config.updateSnapshots === 'all');
+  19 |   await loadPage(page, url);
+  20 |   await expect(page).toHaveScreenshot('anasayfa-tam.png', { fullPage: true });
+  21 | });
+  22 | 
+  23 | test('Anasayfa - Görünen Alan', async ({ page }, testInfo) => {
+  24 |   const url = getUrl(testInfo.config.updateSnapshots === 'all');
+  25 |   await loadPage(page, url);
+  26 |   await expect(page).toHaveScreenshot('anasayfa-viewport.png');
+  27 | });
+  28 | 
+  29 | test('Header', async ({ page }, testInfo) => {
+  30 |   const url = getUrl(testInfo.config.updateSnapshots === 'all');
+  31 |   await loadPage(page, url);
+  32 |   const header = page.locator('header, #header, .header, [role="banner"]').first();
+  33 |   if (await header.isVisible()) {
+> 34 |     await expect(header).toHaveScreenshot('header.png');
+     |                          ^ Error: expect(locator).toHaveScreenshot(expected) failed
+  35 |   } else {
+  36 |     test.skip();
+  37 |   }
+  38 | });
+  39 | 
+  40 | test('Footer', async ({ page }, testInfo) => {
+  41 |   const url = getUrl(testInfo.config.updateSnapshots === 'all');
+  42 |   await loadPage(page, url);
+  43 |   const footer = page.locator('footer, #footer, .footer').first();
+  44 |   if (await footer.isVisible()) {
+  45 |     await footer.scrollIntoViewIfNeeded();
+  46 |     await expect(footer).toHaveScreenshot('footer.png');
+  47 |   } else {
+  48 |     test.skip();
+  49 |   }
+  50 | });
+  51 | 
+```
