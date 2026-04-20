@@ -7,25 +7,17 @@ const URL2 = process.env.URL2 || URL1;
 
 async function loadPage(page, url) {
   await page.goto(url, { waitUntil: 'load', timeout: 60000 });
+  await page.waitForTimeout(4000);
 
-  // Lazy load elementlerin yüklenmesi için en alta kadar scroll et
-  await page.evaluate(async () => {
-    await new Promise((resolve) => {
-      let totalHeight = 0;
-      const distance = 300;
-      const timer = setInterval(() => {
-        window.scrollBy(0, distance);
-        totalHeight += distance;
-        if (totalHeight >= document.body.scrollHeight) {
-          clearInterval(timer);
-          resolve();
-        }
-      }, 100);
-    });
-  });
+  // Lazy load için sayfanın en altına git ve 2 saniye bekle
+  await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+  await page.waitForTimeout(2000);
 
-  // Yüklenme için bekle, sonra en üste dön
-  await page.waitForTimeout(1000);
+  // Bir kere daha aşağı kaydır, kalan lazy load elementleri tetikle
+  await page.evaluate(() => window.scrollBy(0, 300));
+  await page.waitForTimeout(500);
+
+  // En üste dön
   await page.evaluate(() => window.scrollTo(0, 0));
   await page.waitForTimeout(500);
 }
@@ -63,16 +55,26 @@ test('Header', async ({ page }, testInfo) => {
   await expect(header2).toHaveScreenshot('header.png');
 });
 
+async function hideFixedElements(page) {
+  await page.addStyleTag({
+    content: `*[style*="position: fixed"], *[style*="position:fixed"],
+              header, .header, #header, [class*="header"], [class*="navbar"]
+              { display: none !important; }`
+  });
+}
+
 test('Footer', async ({ page }, testInfo) => {
   await loadPage(page, URL1);
   const footer1 = page.locator('footer, #footer, .footer, [class*="footer"], [id*="footer"]').first();
   if (!await footer1.isVisible()) { test.skip(); return; }
   await footer1.scrollIntoViewIfNeeded();
+  await hideFixedElements(page);
   saveBaseline(testInfo.snapshotPath('footer.png'), await footer1.screenshot());
 
   await loadPage(page, URL2);
-  const footer2 = page.locator('footer, #footer, .footer').first();
+  const footer2 = page.locator('footer, #footer, .footer, [class*="footer"], [id*="footer"]').first();
   if (!await footer2.isVisible()) { test.skip(); return; }
   await footer2.scrollIntoViewIfNeeded();
+  await hideFixedElements(page);
   await expect(footer2).toHaveScreenshot('footer.png');
 });
